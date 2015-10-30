@@ -1,0 +1,22 @@
+auth_error: 'Fehler beim Authorisieren des Benutzers.'
+auth_success: 'Der Benutzer %name% wurde erfolgreich authentisiert.'
+core23.facebook.block.facebook_timeline: 'Facebook - Timeline'
+form.choice_facebook: Facebook
+form.choice_flattr: flattr
+form.choice_googleplus: google+
+form.choice_horizontal: Horizontal
+form.choice_linkedin: LinkedIn
+form.choice_mail: E-Mail
+form.choice_pinterest: Pinterest
+form.choice_reddit: Reddit
+form.choice_stumbleupon: StumbleUpon
+form.choice_twitter: Twitter
+form.choice_vertical: Vertikal
+form.label_class: 'CSS Klasse'
+form.label_enabled: Sichtbar
+form.label_id: ID
+form.label_orientation: Ausrichtung
+form.label_services: Dienste
+form.label_theme: Theme
+form.label_title: Titel
+form.label_url: URL

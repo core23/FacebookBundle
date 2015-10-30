@@ -1,0 +1,15 @@
+core23_facebook_success:
+    path:   /auth/success
+    defaults:  { _controller: 'Core23FacebookBundle:Auth:success' }
+
+core23_facebook_error:
+    path:   /auth/error
+    defaults:  { _controller: 'Core23FacebookBundle:Auth:error' }
+
+core23_facebook_check:
+    path:   /auth/_check
+    defaults:  { _controller: 'Core23FacebookBundle:Auth:check' }
+
+core23_facebook_auth:
+    path:   /auth
+    defaults:  { _controller: 'Core23FacebookBundle:Auth:auth' }
