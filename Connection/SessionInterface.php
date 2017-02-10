@@ -16,12 +16,12 @@ interface SessionInterface
      *
      * @return string
      */
-    public function getFbid();
+    public function getFbid(): string;
 
     /**
      * Get token.
      *
      * @return string
      */
-    public function getToken();
+    public function getToken(): string;
 }

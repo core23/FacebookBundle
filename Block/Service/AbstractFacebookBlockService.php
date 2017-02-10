@@ -10,10 +10,10 @@
 namespace Core23\FacebookBundle\Block\Service;
 
 use Core23\FacebookBundle\Connection\FacebookConnection;
-use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class AbstractFacebookBlockService extends AbstractBlockService
+class AbstractFacebookBlockService extends AbstractAdminBlockService
 {
     /**
      * @var FacebookConnection
@@ -25,7 +25,7 @@ class AbstractFacebookBlockService extends AbstractBlockService
      * @param EngineInterface    $templating
      * @param FacebookConnection $connection
      */
-    public function __construct($name, EngineInterface $templating, FacebookConnection $connection)
+    public function __construct(string $name, EngineInterface $templating, FacebookConnection $connection)
     {
         parent::__construct($name, $templating);
 

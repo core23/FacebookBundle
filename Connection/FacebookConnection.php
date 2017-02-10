@@ -19,7 +19,7 @@ final class FacebookConnection extends Facebook
      * @param string $apiKey
      * @param string $sharedSecret
      */
-    public function __construct($apiKey, $sharedSecret)
+    public function __construct(string $apiKey, string $sharedSecret)
     {
         parent::__construct(array(
             'app_id'     => $apiKey,

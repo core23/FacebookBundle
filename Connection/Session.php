@@ -27,7 +27,7 @@ final class Session implements SessionInterface
      * @param string $fbid
      * @param string $token
      */
-    public function __construct($fbid, $token)
+    public function __construct(string $fbid, string $token)
     {
         $this->fbid  = $fbid;
         $this->token = $token;
@@ -36,7 +36,7 @@ final class Session implements SessionInterface
     /**
      * @return string
      */
-    public function getFbid()
+    public function getFbid(): string
     {
         return $this->fbid;
     }
@@ -44,7 +44,7 @@ final class Session implements SessionInterface
     /**
      * @return string
      */
-    public function getToken()
+    public function getToken(): string
     {
         return $this->token;
     }

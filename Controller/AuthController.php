@@ -26,7 +26,7 @@ final class AuthController extends Controller
     /**
      * @return Response
      */
-    public function authAction()
+    public function authAction(): Response
     {
         $fb     = $this->getFacebookConnection();
         $helper = $fb->getRedirectLoginHelper();
@@ -40,7 +40,7 @@ final class AuthController extends Controller
     /**
      * @return Response
      */
-    public function checkAction()
+    public function checkAction(): Response
     {
         $fb     = $this->getFacebookConnection();
         $helper = $fb->getRedirectLoginHelper();
@@ -70,7 +70,7 @@ final class AuthController extends Controller
     /**
      * @return Response
      */
-    public function errorAction()
+    public function errorAction(): Response
     {
         if ($this->isAuthenticated()) {
             return $this->redirectToRoute('core23_facebook_success');
@@ -86,7 +86,7 @@ final class AuthController extends Controller
     /**
      * @return Response
      */
-    public function successAction()
+    public function successAction(): Response
     {
         if (!$this->isAuthenticated()) {
             return $this->redirectToRoute('core23_facebook_error');
@@ -108,7 +108,7 @@ final class AuthController extends Controller
      *
      * @return bool
      */
-    final protected function isAuthenticated()
+    final protected function isAuthenticated(): bool
     {
         return (bool) $this->get('session')->get(static::SESSION_FB_TOKEN);
     }
@@ -116,7 +116,7 @@ final class AuthController extends Controller
     /**
      * @return FacebookConnection
      */
-    private function getFacebookConnection()
+    private function getFacebookConnection(): FacebookConnection
     {
         return $this->get('core23.facebook.connection');
     }
