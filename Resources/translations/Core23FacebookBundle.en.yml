@@ -1,6 +1,6 @@
 auth_error: 'Error authenticating user.'
 auth_success: 'User %name% successfully authenticated.'
-core23.facebook.block.facebook_timeline: 'Facebook - Timeline'
+core23.facebook.block.page_feed: 'Facebook - Page feed'
 form.choice_facebook: Facebook
 form.choice_flattr: flattr
 form.choice_googleplus: google+
@@ -20,3 +20,4 @@ form.label_services: Service
 form.label_theme: Theme
 form.label_title: Title
 form.label_url: URL
+no_feed_items: 'No Facebook posts found.'

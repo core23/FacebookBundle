@@ -14,6 +14,16 @@ use Facebook\Facebook;
 final class FacebookConnection extends Facebook
 {
     /**
+     * @var string
+     */
+    private $apiId;
+
+    /**
+     * @var string
+     */
+    private $sharedSecret;
+
+    /**
      * AbstractConnection constructor.
      *
      * @param string $apiKey
@@ -25,5 +35,8 @@ final class FacebookConnection extends Facebook
             'app_id'     => $apiKey,
             'app_secret' => $sharedSecret,
         ));
+
+        $this->apiId        = $apiKey;
+        $this->sharedSecret = $sharedSecret;
     }
 }

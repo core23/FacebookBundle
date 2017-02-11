@@ -23,10 +23,14 @@ final class Core23FacebookExtension extends Extension
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
+        $bundles       = $container->getParameter('kernel.bundles');
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        // TODO: $loader->load('block.xml');
         $loader->load('services.xml');
+
+        if (isset($bundles['SonataBlockBundle'])) {
+            $loader->load('block.xml');
+        }
 
         $this->configureRoutes($container, $config);
         $this->configureApi($container, $config);

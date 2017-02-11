@@ -1,0 +1,47 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <div class="panel panel-default facebook-feed">
+        {% if settings.title is not empty %}
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i> {{ settings.title }}
+                </h4>
+            </div>
+        {% endif %}
+
+        <div class="panel-body">
+            <div class="list-group">
+                {% for entry in feed %}
+                    <div class="list-group-item feed-post">
+                        {% if entry.message is defined %}
+                            <div class="feed-post-body">
+                                {{ entry.message|nl2br|converturls }}
+                            </div>
+                        {% endif %}
+
+                        {% if entry.picture is defined %}
+                            <div class="feed-post-media">
+                                <a href="{{ entry.permalink_url }}" target="_blank" class="thumbnail">
+                                    <img src="{{ entry.picture }}" {% if entry.message is defined %}alt="{{ entry.message }}"{% endif %} />
+                                    {% if entry.description is defined %}
+                                        <div class="caption">
+                                            {{ entry.description }}
+                                        </div>
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        <span class="feed-post-time">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            {{ entry.created_time|format_datetime }}
+                        </span>
+                    </div>
+                {% else %}
+                    <span class="list-group-item">{{ "no_feed_items"|trans({}, "Core23FacebookBundle") }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,11 +1,12 @@
 {
   "name": "core23/facebook-bundle",
   "type": "symfony-bundle",
-  "description": "symfony Core23FacebookBundle",
+  "description": "This bundle provides a block service for using facebook API inside the sonata-project.",
   "keywords": [
     "symfony",
     "bundle",
     "facebook",
+    "sonata",
     "api"
   ],
   "homepage": "https://core23.de",
@@ -18,7 +19,7 @@
   ],
   "require": {
     "php": "^7.0",
-    "facebook/graph-sdk" : "~5.0",
+    "facebook/graph-sdk" : "^5.0",
     "sonata-project/core-bundle": "^3.0",
     "symfony/form": "^2.8.6 || ^3.1",
     "symfony/framework-bundle": "^2.8.6 || ^3.1"
@@ -29,7 +30,7 @@
     "sllh/php-cs-fixer-styleci-bridge": "^2.0",
     "sonata-project/admin-bundle": "^3.1",
     "sonata-project/block-bundle": "^3.3",
-    "symfony/phpunit-bridge": "^2.8 || ^3.1"
+    "symfony/phpunit-bridge": "^3.1"
   },
   "autoload": {
     "psr-4": {
