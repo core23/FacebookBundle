@@ -108,7 +108,7 @@ final class AuthController extends Controller
      *
      * @return bool
      */
-    final protected function isAuthenticated(): bool
+    private function isAuthenticated(): bool
     {
         return (bool) $this->get('session')->get(static::SESSION_FB_TOKEN);
     }
