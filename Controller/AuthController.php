@@ -76,7 +76,7 @@ final class AuthController extends Controller
             return $this->redirectToRoute('core23_facebook_success');
         }
 
-        if (null != $this->getParameter('core23.facebook.auth_error.redirect_route')) {
+        if (null !== $this->getParameter('core23.facebook.auth_error.redirect_route')) {
             return $this->redirectToRoute($this->getParameter('core23.facebook.auth_error.redirect_route'), $this->getParameter('core23.facebook.auth_error.redirect_route_params'));
         }
 
@@ -92,7 +92,7 @@ final class AuthController extends Controller
             return $this->redirectToRoute('core23_facebook_error');
         }
 
-        if (null != $this->getParameter('core23.facebook.auth_success.redirect_route')) {
+        if (null !== $this->getParameter('core23.facebook.auth_success.redirect_route')) {
             return $this->redirectToRoute($this->getParameter('core23.facebook.auth_success.redirect_route'), $this->getParameter('core23.facebook.auth_success.redirect_route_params'));
         }
 
