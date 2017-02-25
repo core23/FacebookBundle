@@ -1,7 +1,7 @@
 {
   "name": "core23/facebook-bundle",
   "type": "symfony-bundle",
-  "description": "This bundle provides a block service for using facebook API inside the sonata-project.",
+  "description": "This bundle provides a block service for using the Facebook API inside the sonata-project.",
   "keywords": [
     "symfony",
     "bundle",
