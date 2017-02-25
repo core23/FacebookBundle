@@ -39,4 +39,20 @@ final class FacebookConnection extends Facebook
         $this->apiId        = $apiKey;
         $this->sharedSecret = $sharedSecret;
     }
+
+    /**
+     * @return string
+     */
+    public function getApiId(): string
+    {
+        return $this->apiId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSharedSecret(): string
+    {
+        return $this->sharedSecret;
+    }
 }
