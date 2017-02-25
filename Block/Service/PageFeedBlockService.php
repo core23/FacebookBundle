@@ -96,7 +96,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService implements
      *
      * @return array
      */
-    private function getData(array $settings) : array
+    private function getData(array $settings): array
     {
         try {
             $accessToken = $this->getAccessToken();
