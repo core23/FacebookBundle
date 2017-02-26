@@ -79,6 +79,8 @@ final class PageFeedBlockService extends AbstractFacebookBlockService implements
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
             'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
         ));
+
+        $resolver->setRequired(array('id'));
     }
 
     /**
