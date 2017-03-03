@@ -96,7 +96,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService implements
     /**
      * @param array $settings
      *
-     * @return array
+     * @return array|null
      */
     private function getData(array $settings): array
     {
@@ -109,5 +109,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService implements
         } catch (FacebookSDKException $exception) {
             $this->logger->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
         }
+
+        return array();
     }
 }
