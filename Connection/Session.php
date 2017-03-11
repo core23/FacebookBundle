@@ -22,19 +22,26 @@ final class Session implements SessionInterface
     private $token;
 
     /**
+     * @var \DateTime
+     */
+    private $expires;
+
+    /**
      * Session constructor.
      *
-     * @param string $fbid
-     * @param string $token
+     * @param string         $fbid
+     * @param string         $token
+     * @param \DateTime|null $expires
      */
-    public function __construct(string $fbid, string $token)
+    public function __construct(string $fbid, string $token, \DateTime $expires = null)
     {
         $this->fbid  = $fbid;
         $this->token = $token;
+        $this->expires = $expires;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getFbid(): string
     {
@@ -42,10 +49,18 @@ final class Session implements SessionInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getToken(): string
     {
         return $this->token;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExpires()
+    {
+        return $this->expires;
     }
 }
