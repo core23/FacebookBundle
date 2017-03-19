@@ -35,8 +35,8 @@ final class Session implements SessionInterface
      */
     public function __construct(string $fbid, string $token, \DateTime $expires = null)
     {
-        $this->fbid  = $fbid;
-        $this->token = $token;
+        $this->fbid    = $fbid;
+        $this->token   = $token;
         $this->expires = $expires;
     }
 

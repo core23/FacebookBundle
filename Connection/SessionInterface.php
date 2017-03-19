@@ -26,7 +26,7 @@ interface SessionInterface
     public function getToken(): string;
 
     /**
-     * Get session expire time
+     * Get session expire time.
      *
      * @return \DateTime|null
      */
