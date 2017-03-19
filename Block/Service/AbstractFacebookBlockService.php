@@ -11,12 +11,13 @@ namespace Core23\FacebookBundle\Block\Service;
 
 use Facebook\Authentication\AccessToken;
 use Facebook\Facebook;
+use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class AbstractFacebookBlockService extends AbstractAdminBlockService
+class AbstractFacebookBlockService extends AbstractAdminBlockService implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 

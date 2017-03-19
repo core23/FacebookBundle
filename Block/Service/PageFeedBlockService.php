@@ -10,7 +10,6 @@
 namespace Core23\FacebookBundle\Block\Service;
 
 use Facebook\Exceptions\FacebookSDKException;
-use Psr\Log\LoggerAwareInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -21,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class PageFeedBlockService extends AbstractFacebookBlockService implements LoggerAwareInterface
+final class PageFeedBlockService extends AbstractFacebookBlockService
 {
     /**
      * {@inheritdoc}
