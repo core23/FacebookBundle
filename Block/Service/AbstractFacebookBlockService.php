@@ -17,7 +17,7 @@ use Psr\Log\NullLogger;
 use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class AbstractFacebookBlockService extends AbstractAdminBlockService implements LoggerAwareInterface
+abstract class AbstractFacebookBlockService extends AbstractAdminBlockService implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
