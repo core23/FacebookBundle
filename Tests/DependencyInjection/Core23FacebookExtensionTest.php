@@ -24,9 +24,9 @@ class Core23FacebookExtensionTest extends AbstractExtensionTestCase
             ),
         ));
 
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_success.redirect_route', null);
+        $this->assertContainerBuilderHasParameter('core23.facebook.auth_success.redirect_route');
         $this->assertContainerBuilderHasParameter('core23.facebook.auth_success.redirect_route_params', array());
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_error.redirect_route', null);
+        $this->assertContainerBuilderHasParameter('core23.facebook.auth_error.redirect_route');
         $this->assertContainerBuilderHasParameter('core23.facebook.auth_error.redirect_route_params', array());
 
         $this->assertContainerBuilderHasParameter('core23.facebook.api.app_id', 'foo_id');

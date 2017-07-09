@@ -18,6 +18,7 @@ use Facebook\GraphNodes\GraphEdge;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Model\BlockInterface;
 
 class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 {
@@ -76,7 +77,7 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $this->assertSame($blockContext, $this->templating->parameters['context']);
         $this->assertInternalType('array', $this->templating->parameters['settings']);
-        $this->assertInstanceOf('Sonata\BlockBundle\Model\BlockInterface', $this->templating->parameters['block']);
+        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
         $this->assertSame($feedResponse, $this->templating->parameters['feed']);
     }

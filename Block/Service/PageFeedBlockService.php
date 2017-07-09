@@ -87,7 +87,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'Core23FacebookBundle', array(
+        return new Metadata($this->getName(), $code ?? $this->getName(), false, 'Core23FacebookBundle', array(
             'class' => 'fa fa-facebook-official',
         ));
     }
