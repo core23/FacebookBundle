@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "facebook/graph-sdk" : "^5.0",
     "sonata-project/core-bundle": "^3.0",
     "symfony/form": "^2.8.6 || ^3.2",
