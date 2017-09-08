@@ -34,7 +34,7 @@ class Core23FacebookExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('core23.facebook.api.permissions', array('public_profile', 'user_likes'));
     }
 
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return array(
             new Core23FacebookExtension(),
