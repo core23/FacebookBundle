@@ -10,7 +10,9 @@
 namespace Core23\FacebookBundle\Controller;
 
 use Core23\FacebookBundle\Connection\FacebookConnection;
+use Facebook\Authentication\AccessToken;
 use Facebook\Exceptions\FacebookSDKException;
+use Facebook\GraphNodes\GraphUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -46,18 +48,10 @@ final class AuthController extends Controller
         $helper = $fb->getRedirectLoginHelper();
 
         try {
-            $token = $helper->getAccessToken();
-
+            $token    = $helper->getAccessToken();
             $response = $fb->get('/me?fields=id,name', $token);
-            $fbid     = $response->getGraphUser()->getId();
-            $name     = $response->getGraphUser()->getName();
 
-            /** @var Session $session */
-            $session = $this->get('session');
-            $session->set(static::SESSION_FB_ID, $fbid);
-            $session->set(static::SESSION_FB_NAME, $name);
-            $session->set(static::SESSION_FB_TOKEN, $token);
-            $session->set(static::SESSION_FB_EXPIRES, $token->getExpiresAt());
+            $this->storeCredentials($token, $response->getGraphUser());
 
             return $this->redirectToRoute('core23_facebook_success');
         } catch (FacebookSDKException $exception) {
@@ -101,6 +95,23 @@ final class AuthController extends Controller
         return $this->render('Core23FacebookBundle:Auth:success.html.twig', array(
             'name' => $session->get(static::SESSION_FB_NAME),
         ));
+    }
+
+    /**
+     * @param AccessToken $token
+     * @param GraphUser   $user
+     */
+    private function storeCredentials(AccessToken $token, GraphUser $user): void
+    {
+        $fbid = $user->getId();
+        $name = $user->getName();
+
+        /** @var Session $session */
+        $session = $this->get('session');
+        $session->set(static::SESSION_FB_ID, $fbid);
+        $session->set(static::SESSION_FB_NAME, $name);
+        $session->set(static::SESSION_FB_TOKEN, $token);
+        $session->set(static::SESSION_FB_EXPIRES, $token->getExpiresAt());
     }
 
     /**
