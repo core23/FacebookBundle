@@ -36,11 +36,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Core23\\FacebookBundle\\": ""
-    },
-    "exclude-from-classmap": [
-        "/Tests/"
-    ]
+      "Core23\\FacebookBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Core23\\FacebookBundle\\Tests\\": "tests/"
+    }
   },
   "extra": {
     "branch-alias": {
