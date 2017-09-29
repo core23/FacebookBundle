@@ -59,7 +59,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getExpires(): ?\DateTime
+    public function getExpires(): ? \DateTime
     {
         return $this->expires;
     }
