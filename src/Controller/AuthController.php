@@ -48,12 +48,13 @@ final class AuthController extends Controller
         $helper = $fb->getRedirectLoginHelper();
 
         try {
-            $token    = $helper->getAccessToken();
-            $response = $fb->get('/me?fields=id,name', $token);
+            if ($token = $helper->getAccessToken()) {
+                $response = $fb->get('/me?fields=id,name', $token);
 
-            $this->storeCredentials($token, $response->getGraphUser());
+                $this->storeCredentials($token, $response->getGraphUser());
 
-            return $this->redirectToRoute('core23_facebook_success');
+                return $this->redirectToRoute('core23_facebook_success');
+            }
         } catch (FacebookSDKException $exception) {
             $this->get('logger')->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
         }
