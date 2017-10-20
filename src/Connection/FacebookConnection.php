@@ -9,6 +9,7 @@
 
 namespace Core23\FacebookBundle\Connection;
 
+use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 
 final class FacebookConnection extends Facebook
@@ -24,10 +25,12 @@ final class FacebookConnection extends Facebook
     private $sharedSecret;
 
     /**
-     * AbstractConnection constructor.
+     * FacebookConnection constructor.
      *
      * @param string $apiKey
      * @param string $sharedSecret
+     *
+     * @throws FacebookSDKException
      */
     public function __construct(string $apiKey, string $sharedSecret)
     {
