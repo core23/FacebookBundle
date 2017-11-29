@@ -13,17 +13,18 @@ use Core23\FacebookBundle\Connection\FacebookConnection;
 use Facebook\Authentication\AccessToken;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\GraphNodes\GraphUser;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class AuthController extends Controller
 {
-    const SESSION_FB_ID      = '_CORE23_FACEBOOK_ID';
-    const SESSION_FB_NAME    = '_CORE23_FACEBOOK_NAME';
-    const SESSION_FB_TOKEN   = '_CORE23_FACEBOOK_TOKEN';
-    const SESSION_FB_EXPIRES = '_CORE23_FACEBOOK_EXPIRES';
+    public const SESSION_FB_ID      = '_CORE23_FACEBOOK_ID';
+    public const SESSION_FB_NAME    = '_CORE23_FACEBOOK_NAME';
+    public const SESSION_FB_TOKEN   = '_CORE23_FACEBOOK_TOKEN';
+    public const SESSION_FB_EXPIRES = '_CORE23_FACEBOOK_EXPIRES';
 
     /**
      * @return Response
@@ -56,7 +57,7 @@ final class AuthController extends Controller
                 return $this->redirectToRoute('core23_facebook_success');
             }
         } catch (FacebookSDKException $exception) {
-            $this->get('logger')->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
+            $this->getLogger()->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
         }
 
         return $this->redirectToRoute('core23_facebook_error');
@@ -91,7 +92,7 @@ final class AuthController extends Controller
             return $this->redirectToRoute($this->getParameter('core23.facebook.auth_success.redirect_route'), $this->getParameter('core23.facebook.auth_success.redirect_route_params'));
         }
 
-        $session = $this->get('session');
+        $session = $this->getSession();
 
         return $this->render('Core23FacebookBundle:Auth:success.html.twig', array(
             'name' => $session->get(static::SESSION_FB_NAME),
@@ -107,8 +108,7 @@ final class AuthController extends Controller
         $fbid = $user->getId();
         $name = $user->getName();
 
-        /** @var Session $session */
-        $session = $this->get('session');
+        $session = $this->getSession();
         $session->set(static::SESSION_FB_ID, $fbid);
         $session->set(static::SESSION_FB_NAME, $name);
         $session->set(static::SESSION_FB_TOKEN, $token);
@@ -122,7 +122,7 @@ final class AuthController extends Controller
      */
     private function isAuthenticated(): bool
     {
-        return (bool) $this->get('session')->get(static::SESSION_FB_TOKEN);
+        return (bool) $this->getSession()->get(static::SESSION_FB_TOKEN);
     }
 
     /**
@@ -131,5 +131,21 @@ final class AuthController extends Controller
     private function getFacebookConnection(): FacebookConnection
     {
         return $this->get('core23.facebook.connection');
+    }
+
+    /**
+     * @return LoggerInterface
+     */
+    private function getLogger() : LoggerInterface
+    {
+        return $this->get('logger');
+    }
+
+    /**
+     * @return SessionInterface
+     */
+    private function getSession() : SessionInterface
+    {
+        return $this->get('session');
     }
 }

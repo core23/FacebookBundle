@@ -95,7 +95,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
     /**
      * @param array $settings
      *
-     * @return array|null
+     * @return array
      */
     private function getData(array $settings): array
     {
