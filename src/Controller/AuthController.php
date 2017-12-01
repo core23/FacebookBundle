@@ -136,7 +136,7 @@ final class AuthController extends Controller
     /**
      * @return LoggerInterface
      */
-    private function getLogger() : LoggerInterface
+    private function getLogger(): LoggerInterface
     {
         return $this->get('logger');
     }
@@ -144,7 +144,7 @@ final class AuthController extends Controller
     /**
      * @return SessionInterface
      */
-    private function getSession() : SessionInterface
+    private function getSession(): SessionInterface
     {
         return $this->get('session');
     }
