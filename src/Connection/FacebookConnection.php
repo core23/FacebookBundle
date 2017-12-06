@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -34,10 +36,10 @@ final class FacebookConnection extends Facebook
      */
     public function __construct(string $apiKey, string $sharedSecret)
     {
-        parent::__construct(array(
+        parent::__construct([
             'app_id'     => $apiKey,
             'app_secret' => $sharedSecret,
-        ));
+        ]);
 
         $this->apiId        = $apiKey;
         $this->sharedSecret = $sharedSecret;

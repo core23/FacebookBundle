@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -35,7 +37,7 @@ final class AuthController extends Controller
         $helper = $fb->getRedirectLoginHelper();
 
         return $this->redirect($helper->getLoginUrl(
-            $this->generateUrl('core23_facebook_check', array(), UrlGeneratorInterface::ABSOLUTE_URL),
+            $this->generateUrl('core23_facebook_check', [], UrlGeneratorInterface::ABSOLUTE_URL),
             $this->getParameter('core23.facebook.api.permissions')
         ));
     }
@@ -94,9 +96,9 @@ final class AuthController extends Controller
 
         $session = $this->getSession();
 
-        return $this->render('Core23FacebookBundle:Auth:success.html.twig', array(
+        return $this->render('Core23FacebookBundle:Auth:success.html.twig', [
             'name' => $session->get(static::SESSION_FB_NAME),
-        ));
+        ]);
     }
 
     /**

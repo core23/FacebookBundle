@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -27,14 +29,14 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
      */
     private $facebook;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->facebook = $this->createMock(Facebook::class);
     }
 
-    public function testExecute()
+    public function testExecute(): void
     {
         $token = $this->createMock(AccessToken::class);
 
@@ -45,9 +47,9 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $this->facebook->expects($this->once())->method('getApp')
             ->will($this->returnValue($app));
 
-        $feedResponse = array(
-            array('foo' => 'bar'),
-        );
+        $feedResponse = [
+            ['foo' => 'bar'],
+        ];
 
         $edge = $this->createMock(GraphEdge::class);
         $edge->expects($this->once())->method('asArray')
@@ -63,12 +65,12 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $block = new Block();
 
-        $blockContext = new BlockContext($block, array(
+        $blockContext = new BlockContext($block, [
             'title'    => 'Facebook Timeline',
             'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
             'id'       => '0815',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
-        ));
+        ]);
 
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
         $blockService->execute($blockContext);
@@ -82,18 +84,18 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $this->assertSame($feedResponse, $this->templating->parameters['feed']);
     }
 
-    public function testDefaultSettings()
+    public function testDefaultSettings(): void
     {
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
         $blockContext = $this->getBlockContext($blockService);
 
-        $this->assertSettings(array(
+        $this->assertSettings([
             'title'    => 'Facebook Timeline',
             'id'       => null,
             'limit'    => 10,
             'class'    => '',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
             'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
-        ), $blockContext);
+        ], $blockContext);
     }
 }

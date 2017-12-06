@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -27,12 +29,12 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $parameters = array(
+        $parameters = [
             'context'  => $blockContext,
             'settings' => $blockContext->getSettings(),
             'block'    => $blockContext->getBlock(),
             'feed'     => $this->getData($blockContext->getSettings()),
-        );
+        ];
 
         return $this->renderResponse($blockContext->getTemplate(), $parameters, $response);
     }
@@ -40,46 +42,46 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
     /**
      * {@inheritdoc}
      */
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
+    public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
-        $formMapper->add('settings', ImmutableArrayType::class, array(
-            'keys' => array(
-                array('title', TextType::class, array(
+        $formMapper->add('settings', ImmutableArrayType::class, [
+            'keys' => [
+                ['title', TextType::class, [
                     'label'    => 'form.label_title',
                     'required' => false,
-                )),
-                array('id', TextType::class, array(
+                ]],
+                ['id', TextType::class, [
                     'label'    => 'form.label_id',
                     'required' => true,
-                )),
-                array('limit', NumberType::class, array(
+                ]],
+                ['limit', NumberType::class, [
                     'label'    => 'form.label_limit',
                     'required' => false,
-                )),
-                array('class', TextType::class, array(
+                ]],
+                ['class', TextType::class, [
                     'label'    => 'form.label_class',
                     'required' => false,
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'Core23FacebookBundle',
-        ));
+        ]);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureSettings(OptionsResolver $resolver)
+    public function configureSettings(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'title'    => 'Facebook Timeline',
             'id'       => null,
             'limit'    => 10,
             'class'    => '',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
             'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
-        ));
+        ]);
 
-        $resolver->setRequired(array('id'));
+        $resolver->setRequired(['id']);
     }
 
     /**
@@ -87,9 +89,9 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), $code ?? $this->getName(), false, 'Core23FacebookBundle', array(
+        return new Metadata($this->getName(), $code ?? $this->getName(), false, 'Core23FacebookBundle', [
             'class' => 'fa fa-facebook-official',
-        ));
+        ]);
     }
 
     /**
@@ -109,6 +111,6 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
             $this->logger->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
         }
 
-        return array();
+        return [];
     }
 }

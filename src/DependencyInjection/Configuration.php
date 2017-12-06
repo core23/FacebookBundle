@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -23,7 +25,7 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
 
         /** @var ArrayNodeDefinition $node */
-        $node        = $treeBuilder->root('core23_facebook');
+        $node = $treeBuilder->root('core23_facebook');
 
         $this->addRoutingSection($node);
         $this->addApiSection($node);
@@ -34,7 +36,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addRoutingSection(ArrayNodeDefinition $node)
+    private function addRoutingSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
@@ -43,7 +45,7 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('route')->defaultNull()->end()
                         ->arrayNode('route_parameters')
-                            ->defaultValue(array())
+                            ->defaultValue([])
                             ->prototype('array')->end()
                         ->end()
                     ->end()
@@ -53,7 +55,7 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('route')->defaultNull()->end()
                         ->arrayNode('route_parameters')
-                            ->defaultValue(array())
+                            ->defaultValue([])
                             ->prototype('array')->end()
                         ->end()
                     ->end()
@@ -65,7 +67,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addApiSection(ArrayNodeDefinition $node)
+    private function addApiSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
@@ -76,7 +78,7 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('app_secret')->isRequired()->end()
                         ->arrayNode('permissions')
                             ->prototype('scalar')->end()
-                            ->defaultValue(array('public_profile', 'user_likes'))
+                            ->defaultValue(['public_profile', 'user_likes'])
                         ->end()
                     ->end()
                 ->end()

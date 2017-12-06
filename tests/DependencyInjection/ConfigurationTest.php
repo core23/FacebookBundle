@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -15,32 +17,32 @@ use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends TestCase
 {
-    public function testOptions()
+    public function testOptions(): void
     {
         $processor = new Processor();
 
-        $config = $processor->processConfiguration(new Configuration(), array(array(
-            'api' => array(
+        $config = $processor->processConfiguration(new Configuration(), [[
+            'api' => [
                 'app_id'     => 'foo_id',
                 'app_secret' => 'bar_secret',
-            ),
-        )));
+            ],
+        ]]);
 
-        $expected = array(
-            'api' => array(
+        $expected = [
+            'api' => [
                 'app_id'      => 'foo_id',
                 'app_secret'  => 'bar_secret',
-                'permissions' => array('public_profile', 'user_likes'),
-            ),
-            'auth_success' => array(
+                'permissions' => ['public_profile', 'user_likes'],
+            ],
+            'auth_success' => [
                 'route'            => null,
-                'route_parameters' => array(),
-            ),
-            'auth_error' => array(
+                'route_parameters' => [],
+            ],
+            'auth_error' => [
                 'route'            => null,
-                'route_parameters' => array(),
-            ),
-        );
+                'route_parameters' => [],
+            ],
+        ];
 
         $this->assertSame($expected, $config);
     }

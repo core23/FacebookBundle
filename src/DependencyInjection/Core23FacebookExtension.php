@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -19,7 +21,7 @@ final class Core23FacebookExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
@@ -40,7 +42,7 @@ final class Core23FacebookExtension extends Extension
      * @param ContainerBuilder $container
      * @param array            $config
      */
-    private function configureRoutes(ContainerBuilder $container, array $config)
+    private function configureRoutes(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23.facebook.auth_success.redirect_route', $config['auth_success']['route']);
         $container->setParameter('core23.facebook.auth_success.redirect_route_params', $config['auth_success']['route_parameters']);
@@ -53,7 +55,7 @@ final class Core23FacebookExtension extends Extension
      * @param ContainerBuilder $container
      * @param array            $config
      */
-    private function configureApi(ContainerBuilder $container, array $config)
+    private function configureApi(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23.facebook.api.app_id', $config['api']['app_id']);
         $container->setParameter('core23.facebook.api.app_secret', $config['api']['app_secret']);
