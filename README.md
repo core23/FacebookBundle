@@ -6,7 +6,6 @@ What is FacebookBundle?
 
 [![Build Status](https://travis-ci.org/core23/FacebookBundle.svg)](https://travis-ci.org/core23/FacebookBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/FacebookBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/core23/FacebookBundle)
-[![Code Climate](https://codeclimate.com/github/core23/FacebookBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/FacebookBundle)
 [![Coverage Status](https://coveralls.io/repos/core23/FacebookBundle/badge.svg)](https://coveralls.io/r/core23/FacebookBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/21ec2481-bd6b-4bef-ac92-f2f37a735e43/mini.png)](https://insight.sensiolabs.com/projects/21ec2481-bd6b-4bef-ac92-f2f37a735e43)
 
