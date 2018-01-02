@@ -78,7 +78,7 @@ final class AuthController extends Controller
             return $this->redirectToRoute($this->getParameter('core23.facebook.auth_error.redirect_route'), $this->getParameter('core23.facebook.auth_error.redirect_route_params'));
         }
 
-        return $this->render('Core23FacebookBundle:Auth:error.html.twig');
+        return $this->render('@Core23Facebook/Auth/error.html.twig');
     }
 
     /**
@@ -96,7 +96,7 @@ final class AuthController extends Controller
 
         $session = $this->getSession();
 
-        return $this->render('Core23FacebookBundle:Auth:success.html.twig', [
+        return $this->render('@Core23Facebook/Auth/success.html.twig', [
             'name' => $session->get(static::SESSION_FB_NAME),
         ]);
     }

@@ -78,7 +78,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
             'limit'    => 10,
             'class'    => '',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
-            'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
+            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
         ]);
 
         $resolver->setRequired(['id']);

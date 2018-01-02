@@ -67,7 +67,7 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $blockContext = new BlockContext($block, [
             'title'    => 'Facebook Timeline',
-            'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
+            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
             'id'       => '0815',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
         ]);
@@ -75,7 +75,7 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
         $blockService->execute($blockContext);
 
-        $this->assertSame('Core23FacebookBundle:Block:block_page_feed.html.twig', $this->templating->view);
+        $this->assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
         $this->assertSame($blockContext, $this->templating->parameters['context']);
         $this->assertInternalType('array', $this->templating->parameters['settings']);
@@ -95,7 +95,7 @@ class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
             'limit'    => 10,
             'class'    => '',
             'fields'   => 'type,message,description,permalink_url,picture,created_time',
-            'template' => 'Core23FacebookBundle:Block:block_page_feed.html.twig',
+            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
         ], $blockContext);
     }
 }
