@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="auth_error">
+        <source>auth_error</source>
+        <target>Error authenticating user.</target>
+      </trans-unit>
+      <trans-unit id="auth_success">
+        <source>auth_success</source>
+        <target>User %name% successfully authenticated.</target>
+      </trans-unit>
+      <trans-unit id="core23.facebook.block.page_feed">
+        <source>core23.facebook.block.page_feed</source>
+        <target>Facebook - Page feed</target>
+      </trans-unit>
+      <trans-unit id="form.choice_facebook">
+        <source>form.choice_facebook</source>
+        <target>Facebook</target>
+      </trans-unit>
+      <trans-unit id="form.choice_flattr">
+        <source>form.choice_flattr</source>
+        <target>flattr</target>
+      </trans-unit>
+      <trans-unit id="form.choice_googleplus">
+        <source>form.choice_googleplus</source>
+        <target>google+</target>
+      </trans-unit>
+      <trans-unit id="form.choice_horizontal">
+        <source>form.choice_horizontal</source>
+        <target>Horizontal</target>
+      </trans-unit>
+      <trans-unit id="form.choice_linkedin">
+        <source>form.choice_linkedin</source>
+        <target>LinkedIn</target>
+      </trans-unit>
+      <trans-unit id="form.choice_mail">
+        <source>form.choice_mail</source>
+        <target>E-Mail</target>
+      </trans-unit>
+      <trans-unit id="form.choice_pinterest">
+        <source>form.choice_pinterest</source>
+        <target>Pinterest</target>
+      </trans-unit>
+      <trans-unit id="form.choice_reddit">
+        <source>form.choice_reddit</source>
+        <target>Reddit</target>
+      </trans-unit>
+      <trans-unit id="form.choice_stumbleupon">
+        <source>form.choice_stumbleupon</source>
+        <target>StumbleUpon</target>
+      </trans-unit>
+      <trans-unit id=".a0ZQ4D" resname="form.choice_twitter">
+        <source>form.choice_twitter</source>
+        <target>Twitter</target>
+      </trans-unit>
+      <trans-unit id="form.choice_vertical">
+        <source>form.choice_vertical</source>
+        <target>Vertikal</target>
+      </trans-unit>
+      <trans-unit id="form.label_class">
+        <source>form.label_class</source>
+        <target>CSS Class</target>
+      </trans-unit>
+      <trans-unit id="form.label_enabled">
+        <source>form.label_enabled</source>
+        <target>Enabled</target>
+      </trans-unit>
+      <trans-unit id="form.label_id">
+        <source>form.label_id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="KMlS.ch" resname="form.label_orientation">
+        <source>form.label_orientation</source>
+        <target>Orientation</target>
+      </trans-unit>
+      <trans-unit id="form.label_services">
+        <source>form.label_services</source>
+        <target>Service</target>
+      </trans-unit>
+      <trans-unit id="form.label_theme">
+        <source>form.label_theme</source>
+        <target>Theme</target>
+      </trans-unit>
+      <trans-unit id="form.label_title">
+        <source>form.label_title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="1kSuG.g" resname="form.label_url">
+        <source>form.label_url</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="no_feed_items">
+        <source>no_feed_items</source>
+        <target>No Facebook posts found.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
