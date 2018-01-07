@@ -24,9 +24,6 @@ use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 
 class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 {
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|Facebook
-     */
     private $facebook;
 
     protected function setUp(): void
