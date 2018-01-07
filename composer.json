@@ -32,6 +32,9 @@
     "sonata-project/block-bundle": "^3.3",
     "symfony/phpunit-bridge": "^4.0"
   },
+  "suggest": {
+    "sonata-project/block-bundle": "If you want to use sonata blocks."
+  },
   "autoload": {
     "psr-4": {
       "Core23\\FacebookBundle\\": "src/"
