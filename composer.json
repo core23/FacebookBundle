@@ -20,7 +20,7 @@
   "require": {
     "php": "^7.1",
     "facebook/graph-sdk" : "^5.0",
-    "sonata-project/core-bundle": "^3.0",
+    "sonata-project/core-bundle": "^3.9",
     "symfony/dependency-injection": "^3.4 || ^4.0",
     "symfony/expression-language": "^3.4 || ^4.0",
     "symfony/form": "^3.4 || ^4.0",
@@ -28,8 +28,8 @@
   },
   "require-dev": {
     "matthiasnoback/symfony-dependency-injection-test": "^2.3",
-    "sonata-project/admin-bundle": "^3.1",
-    "sonata-project/block-bundle": "^3.3",
+    "sonata-project/admin-bundle": "^3.30",
+    "sonata-project/block-bundle": "^3.9",
     "symfony/phpunit-bridge": "^4.0"
   },
   "suggest": {
