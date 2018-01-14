@@ -1,56 +1,66 @@
 {
-  "name": "core23/facebook-bundle",
-  "type": "symfony-bundle",
-  "description": "This bundle provides a block service for using the Facebook API inside the sonata-project.",
-  "keywords": [
-    "symfony",
-    "bundle",
-    "facebook",
-    "sonata",
-    "api"
-  ],
-  "homepage": "https://core23.de",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Christian Gripp",
-      "email": "mail@core23.de"
+    "name": "core23/facebook-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle provides a block service for using the Facebook API inside the sonata-project.",
+    "keywords": [
+        "symfony",
+        "bundle",
+        "facebook",
+        "sonata",
+        "api"
+    ],
+    "homepage": "https://core23.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Gripp",
+            "email": "mail@core23.de"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "facebook/graph-sdk": "^5.0",
+        "sonata-project/core-bundle": "^3.9",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/expression-language": "^3.4 || ^4.0",
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/framework-bundle": "^3.4 || ^4.0"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.2",
+        "matthiasnoback/symfony-dependency-injection-test": "^2.3",
+        "sllh/composer-lint": "^1.0",
+        "sonata-project/admin-bundle": "^3.30",
+        "sonata-project/block-bundle": "^3.9",
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "suggest": {
+        "sonata-project/block-bundle": "If you want to use sonata blocks."
+    },
+    "autoload": {
+        "psr-4": {
+            "Core23\\FacebookBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Core23\\FacebookBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
-  ],
-  "require": {
-    "php": "^7.1",
-    "facebook/graph-sdk" : "^5.0",
-    "sonata-project/core-bundle": "^3.9",
-    "symfony/dependency-injection": "^3.4 || ^4.0",
-    "symfony/expression-language": "^3.4 || ^4.0",
-    "symfony/form": "^3.4 || ^4.0",
-    "symfony/framework-bundle": "^3.4 || ^4.0"
-  },
-  "require-dev": {
-    "matthiasnoback/symfony-dependency-injection-test": "^2.3",
-    "sonata-project/admin-bundle": "^3.30",
-    "sonata-project/block-bundle": "^3.9",
-    "symfony/phpunit-bridge": "^4.0"
-  },
-  "suggest": {
-    "sonata-project/block-bundle": "If you want to use sonata blocks."
-  },
-  "autoload": {
-    "psr-4": {
-      "Core23\\FacebookBundle\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Core23\\FacebookBundle\\Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.x-dev"
-    }
-  },
-  "config": {
-    "sort-packages": true
-  }
 }
