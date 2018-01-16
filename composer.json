@@ -37,6 +37,14 @@
     "suggest": {
         "sonata-project/block-bundle": "If you want to use sonata blocks."
     },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Core23\\FacebookBundle\\": "src/"
@@ -54,13 +62,5 @@
         "post-update-cmd": [
             "@composer bin all update --ansi"
         ]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.x-dev"
-        }
-    },
-    "config": {
-        "sort-packages": true
     }
 }
