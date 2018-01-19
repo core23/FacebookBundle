@@ -38,7 +38,7 @@ final class AuthController extends Controller
 
         return $this->redirect($helper->getLoginUrl(
             $this->generateUrl('core23_facebook_check', [], UrlGeneratorInterface::ABSOLUTE_URL),
-            $this->getParameter('core23.facebook.api.permissions')
+            $this->getParameter('core23_facebook.api.permissions')
         ));
     }
 
@@ -74,8 +74,8 @@ final class AuthController extends Controller
             return $this->redirectToRoute('core23_facebook_success');
         }
 
-        if (null !== $this->getParameter('core23.facebook.auth_error.redirect_route')) {
-            return $this->redirectToRoute($this->getParameter('core23.facebook.auth_error.redirect_route'), $this->getParameter('core23.facebook.auth_error.redirect_route_params'));
+        if (null !== $this->getParameter('core23_facebook.auth_error.redirect_route')) {
+            return $this->redirectToRoute($this->getParameter('core23_facebook.auth_error.redirect_route'), $this->getParameter('core23_facebook.auth_error.redirect_route_params'));
         }
 
         return $this->render('@Core23Facebook/Auth/error.html.twig');
@@ -90,8 +90,8 @@ final class AuthController extends Controller
             return $this->redirectToRoute('core23_facebook_error');
         }
 
-        if (null !== $this->getParameter('core23.facebook.auth_success.redirect_route')) {
-            return $this->redirectToRoute($this->getParameter('core23.facebook.auth_success.redirect_route'), $this->getParameter('core23.facebook.auth_success.redirect_route_params'));
+        if (null !== $this->getParameter('core23_facebook.auth_success.redirect_route')) {
+            return $this->redirectToRoute($this->getParameter('core23_facebook.auth_success.redirect_route'), $this->getParameter('core23_facebook.auth_success.redirect_route_params'));
         }
 
         $session = $this->getSession();
@@ -132,7 +132,7 @@ final class AuthController extends Controller
      */
     private function getFacebookConnection(): FacebookConnection
     {
-        return $this->get('core23.facebook.connection');
+        return $this->get('core23_facebook.connection');
     }
 
     /**

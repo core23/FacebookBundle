@@ -13,8 +13,8 @@
         <source>auth_success</source>
         <target>User %name% successfully authenticated.</target>
       </trans-unit>
-      <trans-unit id="core23.facebook.block.page_feed">
-        <source>core23.facebook.block.page_feed</source>
+      <trans-unit id="core23_facebook.block.page_feed">
+        <source>core23_facebook.block.page_feed</source>
         <target>Facebook - Page feed</target>
       </trans-unit>
       <trans-unit id="form.choice_facebook">

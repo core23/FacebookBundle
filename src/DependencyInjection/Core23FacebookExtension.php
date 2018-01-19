@@ -44,11 +44,11 @@ final class Core23FacebookExtension extends Extension
      */
     private function configureRoutes(ContainerBuilder $container, array $config): void
     {
-        $container->setParameter('core23.facebook.auth_success.redirect_route', $config['auth_success']['route']);
-        $container->setParameter('core23.facebook.auth_success.redirect_route_params', $config['auth_success']['route_parameters']);
+        $container->setParameter('core23_facebook.auth_success.redirect_route', $config['auth_success']['route']);
+        $container->setParameter('core23_facebook.auth_success.redirect_route_params', $config['auth_success']['route_parameters']);
 
-        $container->setParameter('core23.facebook.auth_error.redirect_route', $config['auth_success']['route']);
-        $container->setParameter('core23.facebook.auth_error.redirect_route_params', $config['auth_success']['route_parameters']);
+        $container->setParameter('core23_facebook.auth_error.redirect_route', $config['auth_success']['route']);
+        $container->setParameter('core23_facebook.auth_error.redirect_route_params', $config['auth_success']['route_parameters']);
     }
 
     /**
@@ -57,8 +57,8 @@ final class Core23FacebookExtension extends Extension
      */
     private function configureApi(ContainerBuilder $container, array $config): void
     {
-        $container->setParameter('core23.facebook.api.app_id', $config['api']['app_id']);
-        $container->setParameter('core23.facebook.api.app_secret', $config['api']['app_secret']);
-        $container->setParameter('core23.facebook.api.permissions', $config['api']['permissions']);
+        $container->setParameter('core23_facebook.api.app_id', $config['api']['app_id']);
+        $container->setParameter('core23_facebook.api.app_secret', $config['api']['app_secret']);
+        $container->setParameter('core23_facebook.api.permissions', $config['api']['permissions']);
     }
 }

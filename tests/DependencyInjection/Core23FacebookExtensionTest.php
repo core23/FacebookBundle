@@ -26,14 +26,14 @@ class Core23FacebookExtensionTest extends AbstractExtensionTestCase
             ],
         ]);
 
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_success.redirect_route');
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_success.redirect_route_params', []);
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_error.redirect_route');
-        $this->assertContainerBuilderHasParameter('core23.facebook.auth_error.redirect_route_params', []);
+        $this->assertContainerBuilderHasParameter('core23_facebook.auth_success.redirect_route');
+        $this->assertContainerBuilderHasParameter('core23_facebook.auth_success.redirect_route_params', []);
+        $this->assertContainerBuilderHasParameter('core23_facebook.auth_error.redirect_route');
+        $this->assertContainerBuilderHasParameter('core23_facebook.auth_error.redirect_route_params', []);
 
-        $this->assertContainerBuilderHasParameter('core23.facebook.api.app_id', 'foo_id');
-        $this->assertContainerBuilderHasParameter('core23.facebook.api.app_secret', 'bar_secret');
-        $this->assertContainerBuilderHasParameter('core23.facebook.api.permissions', ['public_profile', 'user_likes']);
+        $this->assertContainerBuilderHasParameter('core23_facebook.api.app_id', 'foo_id');
+        $this->assertContainerBuilderHasParameter('core23_facebook.api.app_secret', 'bar_secret');
+        $this->assertContainerBuilderHasParameter('core23_facebook.api.permissions', ['public_profile', 'user_likes']);
     }
 
     protected function getContainerExtensions(): array
