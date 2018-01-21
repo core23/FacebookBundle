@@ -14,7 +14,7 @@ namespace Core23\FacebookBundle\Tests\Controller;
 use Core23\FacebookBundle\Controller\AuthController;
 use PHPUnit\Framework\TestCase;
 
-class AuthControllerTest extends TestCase
+final class AuthControllerTest extends TestCase
 {
     private $controller;
 

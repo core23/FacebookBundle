@@ -14,7 +14,7 @@ namespace Core23\FacebookBundle\Tests\DependencyInjection;
 use Core23\FacebookBundle\DependencyInjection\Core23FacebookExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
-class Core23FacebookExtensionTest extends AbstractExtensionTestCase
+final class Core23FacebookExtensionTest extends AbstractExtensionTestCase
 {
     public function testLoadDefault(): void
     {

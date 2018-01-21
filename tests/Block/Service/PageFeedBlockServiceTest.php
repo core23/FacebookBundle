@@ -22,7 +22,7 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 
-class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
+final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 {
     private $facebook;
 
