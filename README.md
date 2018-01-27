@@ -57,4 +57,4 @@ core23_facebook:
 
 This bundle is under the [MIT license](LICENSE.md).
 
-[FacebookAPI]: https://developers.facebook.com/
+[Facebook API]: https://developers.facebook.com/
