@@ -63,10 +63,11 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $block = new Block();
 
         $blockContext = new BlockContext($block, [
-            'title'    => 'Facebook Timeline',
-            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
-            'id'       => '0815',
-            'fields'   => 'type,message,description,permalink_url,picture,created_time',
+            'title'              => null,
+            'translation_domain' => null,
+            'template'           => '@Core23Facebook/Block/block_page_feed.html.twig',
+            'id'                 => '0815',
+            'fields'             => 'type,message,description,permalink_url,picture,created_time',
         ]);
 
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
@@ -87,12 +88,16 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $blockContext = $this->getBlockContext($blockService);
 
         $this->assertSettings([
-            'title'    => 'Facebook Timeline',
-            'id'       => null,
-            'limit'    => 10,
-            'class'    => '',
-            'fields'   => 'type,message,description,permalink_url,picture,created_time',
-            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
+            'title'              => null,
+            'translation_domain' => null,
+            'icon'               => 'fa fa-facebook-official',
+            'class'              => null,
+            'translation_domain' => null,
+            'id'                 => null,
+            'limit'              => 10,
+            'class'              => null,
+            'fields'             => 'type,message,description,permalink_url,picture,created_time',
+            'template'           => '@Core23Facebook/Block/block_page_feed.html.twig',
         ], $blockContext);
     }
 }

@@ -50,16 +50,24 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
                     'label'    => 'form.label_title',
                     'required' => false,
                 ]],
+                ['translation_domain', TextType::class, [
+                    'label'    => 'form.label_translation_domain',
+                    'required' => false,
+                ]],
+                ['icon', TextType::class, [
+                    'label'    => 'form.label_icon',
+                    'required' => false,
+                ]],
+                ['class', TextType::class, [
+                    'label'    => 'form.label_class',
+                    'required' => false,
+                ]],
                 ['id', TextType::class, [
                     'label'    => 'form.label_id',
                     'required' => true,
                 ]],
                 ['limit', NumberType::class, [
                     'label'    => 'form.label_limit',
-                    'required' => false,
-                ]],
-                ['class', TextType::class, [
-                    'label'    => 'form.label_class',
                     'required' => false,
                 ]],
             ],
@@ -73,12 +81,14 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'title'    => 'Facebook Timeline',
-            'id'       => null,
-            'limit'    => 10,
-            'class'    => '',
-            'fields'   => 'type,message,description,permalink_url,picture,created_time',
-            'template' => '@Core23Facebook/Block/block_page_feed.html.twig',
+            'title'              => null,
+            'translation_domain' => null,
+            'icon'               => 'fa fa-facebook-official',
+            'class'              => null,
+            'id'                 => null,
+            'limit'              => 10,
+            'fields'             => 'type,message,description,permalink_url,picture,created_time',
+            'template'           => '@Core23Facebook/Block/block_page_feed.html.twig',
         ]);
 
         $resolver->setRequired(['id']);
