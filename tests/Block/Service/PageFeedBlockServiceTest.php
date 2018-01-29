@@ -92,10 +92,8 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
             'translation_domain' => null,
             'icon'               => 'fa fa-facebook-official',
             'class'              => null,
-            'translation_domain' => null,
             'id'                 => null,
             'limit'              => 10,
-            'class'              => null,
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
             'template'           => '@Core23Facebook/Block/block_page_feed.html.twig',
         ], $blockContext);
