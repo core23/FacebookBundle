@@ -23,7 +23,7 @@
                     <div class="list-group-item feed-post">
                         {% if entry.message is defined %}
                             <div class="feed-post-body">
-                                {{ entry.message|nl2br|converturls }}
+                                {{ entry.message|nl2br|converturls|antispam(true) }}
                             </div>
                         {% endif %}
 
