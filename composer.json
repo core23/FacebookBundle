@@ -20,7 +20,7 @@
     "require": {
         "php": "^7.1",
         "core23/antispam-bundle": "^0.2",
-        "core23/twig-extensions": "^0.2",
+        "core23/twig-extensions": "^0.3",
         "facebook/graph-sdk": "^5.0",
         "sonata-project/core-bundle": "^3.9",
         "symfony/dependency-injection": "^3.4 || ^4.0",
