@@ -113,7 +113,7 @@ final class AuthController extends Controller
         $session = $this->getSession();
         $session->set(static::SESSION_FB_ID, $fbid);
         $session->set(static::SESSION_FB_NAME, $name);
-        $session->set(static::SESSION_FB_TOKEN, $token);
+        $session->set(static::SESSION_FB_TOKEN, $token->getValue());
         $session->set(static::SESSION_FB_EXPIRES, $token->getExpiresAt());
     }
 
