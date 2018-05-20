@@ -26,7 +26,7 @@ abstract class AbstractFacebookBlockService extends AbstractAdminBlockService im
     /**
      * @var Facebook
      */
-    protected $facebook;
+    private $facebook;
 
     /**
      * @param string          $name
@@ -39,6 +39,14 @@ abstract class AbstractFacebookBlockService extends AbstractAdminBlockService im
 
         $this->facebook = $connection;
         $this->logger   = new NullLogger();
+    }
+
+    /**
+     * @return Facebook
+     */
+    protected function getFacebook(): Facebook
+    {
+        return $this->facebook;
     }
 
     /**

@@ -114,7 +114,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         try {
             $accessToken = $this->getAccessToken();
 
-            $response = $this->facebook->get('/'.$settings['id'].'/feed?fields='.$settings['fields'], $accessToken);
+            $response = $this->getFacebook()->get('/'.$settings['id'].'/feed?fields='.$settings['fields'], $accessToken);
 
             return $response->getGraphEdge()->asArray();
         } catch (FacebookSDKException $exception) {
