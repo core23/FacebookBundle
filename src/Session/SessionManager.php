@@ -25,12 +25,12 @@ final class SessionManager implements SessionManagerInterface
     private const SESSION_FB_TOKEN   = '_CORE23_FACEBOOK_TOKEN';
 
     /**
-     * @var SessionInterface
+     * @var Session
      */
     private $session;
 
     /**
-     * AbstractAuthAction constructor.
+     * SessionManager constructor.
      *
      * @param Session $session
      */
