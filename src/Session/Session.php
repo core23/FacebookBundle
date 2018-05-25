@@ -92,6 +92,6 @@ final class Session implements SessionInterface
      */
     public static function fromFacebookApi(AccessToken $token, GraphUser $graphUser): SessionInterface
     {
-        return new self($graphUser->getId(), $graphUser->getName(), $token->getValue(), $token->getExpiresAt());
+        return new self($graphUser->getId() ?: '', $graphUser->getName() ?: '', $token->getValue(), $token->getExpiresAt());
     }
 }
