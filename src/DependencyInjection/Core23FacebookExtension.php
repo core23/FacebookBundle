@@ -28,6 +28,7 @@ final class Core23FacebookExtension extends Extension
         $bundles       = $container->getParameter('kernel.bundles');
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('action.xml');
         $loader->load('services.xml');
 
         if (isset($bundles['SonataBlockBundle'])) {
