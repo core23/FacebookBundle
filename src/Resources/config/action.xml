@@ -10,15 +10,13 @@
       <argument type="service" id="twig"/>
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.session.manager"/>
-      <argument>%core23_facebook.auth_error.redirect_route%</argument>
-      <argument>%core23_facebook.auth_error.redirect_route_params%</argument>
+      <argument type="service" id="event_dispatcher"/>
     </service>
     <service id="core23_facebook.action.auth_success" class="Core23\FacebookBundle\Action\AuthSuccessAction">
       <argument type="service" id="twig"/>
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.session.manager"/>
-      <argument>%core23_facebook.auth_success.redirect_route%</argument>
-      <argument>%core23_facebook.auth_success.redirect_route_params%</argument>
+      <argument type="service" id="event_dispatcher"/>
     </service>
     <service id="core23_facebook.action.check_auth" class="Core23\FacebookBundle\Action\CheckAuthAction">
       <argument type="service" id="router"/>

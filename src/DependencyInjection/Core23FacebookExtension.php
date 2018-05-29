@@ -35,21 +35,7 @@ final class Core23FacebookExtension extends Extension
             $loader->load('block.xml');
         }
 
-        $this->configureRoutes($container, $config);
         $this->configureApi($container, $config);
-    }
-
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
-    private function configureRoutes(ContainerBuilder $container, array $config): void
-    {
-        $container->setParameter('core23_facebook.auth_success.redirect_route', $config['auth_success']['route']);
-        $container->setParameter('core23_facebook.auth_success.redirect_route_params', $config['auth_success']['route_parameters']);
-
-        $container->setParameter('core23_facebook.auth_error.redirect_route', $config['auth_success']['route']);
-        $container->setParameter('core23_facebook.auth_error.redirect_route_params', $config['auth_success']['route_parameters']);
     }
 
     /**

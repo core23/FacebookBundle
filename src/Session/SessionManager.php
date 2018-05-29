@@ -69,6 +69,17 @@ final class SessionManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
+    public function clear(): void
+    {
+        $this->session->remove(static::SESSION_FB_ID);
+        $this->session->remove(static::SESSION_FB_NAME);
+        $this->session->remove(static::SESSION_FB_TOKEN);
+        $this->session->remove(static::SESSION_FB_EXPIRES);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getSession(): ?SessionInterface
     {
         if (!$this->isAuthenticated()) {

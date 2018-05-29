@@ -34,14 +34,6 @@ final class ConfigurationTest extends TestCase
                 'app_secret'  => 'bar_secret',
                 'permissions' => ['public_profile', 'user_likes'],
             ],
-            'auth_success' => [
-                'route'            => null,
-                'route_parameters' => [],
-            ],
-            'auth_error' => [
-                'route'            => null,
-                'route_parameters' => [],
-            ],
         ];
 
         $this->assertSame($expected, $config);

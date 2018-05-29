@@ -33,6 +33,11 @@ interface SessionManagerInterface
     public function store(SessionInterface $session): void;
 
     /**
+     * Removes all stored sessions.
+     */
+    public function clear(): void;
+
+    /**
      * @return SessionInterface|null
      */
     public function getSession(): ?SessionInterface;
