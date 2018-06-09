@@ -75,27 +75,13 @@ final class CheckAuthAction implements LoggerAwareInterface
 
                 $this->sessionManager->store(Session::fromFacebookApi($token, $response->getGraphUser()));
 
-                return $this->redirectToRoute('core23_facebook_success');
+                return new RedirectResponse($this->generateUrl('core23_facebook_success'));
             }
         } catch (FacebookSDKException $exception) {
             $this->logger->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
         }
 
-        return $this->redirectToRoute('core23_facebook_error');
-    }
-
-    /**
-     * Returns a RedirectResponse to the given route with the given parameters.
-     *
-     * @param string $route      The name of the route
-     * @param array  $parameters An array of parameters
-     * @param int    $status     The status code to use for the Response
-     *
-     * @return RedirectResponse
-     */
-    private function redirectToRoute($route, array $parameters = [], $status = 302): RedirectResponse
-    {
-        return new RedirectResponse($this->generateUrl($route, $parameters), $status);
+        return new RedirectResponse($this->generateUrl('core23_facebook_error'));
     }
 
     /**
