@@ -43,8 +43,6 @@ final class CheckAuthAction implements LoggerAwareInterface
     private $sessionManager;
 
     /**
-     * CheckAuthAction constructor.
-     *
      * @param RouterInterface    $router
      * @param FacebookConnection $facebookConnection
      * @param SessionManager     $sessionManager

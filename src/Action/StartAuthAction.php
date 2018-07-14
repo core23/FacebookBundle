@@ -35,8 +35,6 @@ final class StartAuthAction
     private $permissions;
 
     /**
-     * StartAuthAction constructor.
-     *
      * @param RouterInterface    $router
      * @param FacebookConnection $facebookConnection
      * @param string[]           $permissions

@@ -27,8 +27,6 @@ final class FacebookConnection extends Facebook
     private $sharedSecret;
 
     /**
-     * FacebookConnection constructor.
-     *
      * @param string $apiKey
      * @param string $sharedSecret
      *

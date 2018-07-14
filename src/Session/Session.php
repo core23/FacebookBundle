@@ -37,8 +37,6 @@ final class Session implements SessionInterface
     private $expireDate;
 
     /**
-     * Session constructor.
-     *
      * @param string         $facebookId
      * @param string         $name
      * @param string         $token
