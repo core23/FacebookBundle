@@ -1,3 +1,27 @@
+21/09/2018 16:46  0.4.0  Action pattern
+80f1075 Removed templating dependency
+dfe9f3d Updated .editorconfig
+eab52b9 TRAVIS: Moved dependencies check to allow failures
+4e90afd Removed useless PHPDoc
+73adc8c Sync config
+ed77001 Added composer-require-checker to build
+55867a9 Sync phpstan config
+be440a9 phpstan findings
+943bce3 Require latest phpstan version
+8c7cd55 Use class name as controller service id
+120c853 Added type to private methods
+e60f637 Removed internal method
+16625e8 Created issue templates
+8f7eee2 Catch null pointer exception
+510310f Clean phpstan config
+bc7eb66 Added getUsername to success event
+8cb95e6 Use events instead custom redirect routes
+7807125 Catch null values when converting API to internal model
+7c25759 Fixed wrong PHPDoc
+2cee89e Use ADR pattern
+3bbbddc Closing API
+0d6b4d7 Updated admin dependency
+cc1a009 Pass token key instead of token object to session
 07/02/2018 20:58  0.3.0  Added more options to feed block
 c2ce42c Cleanup translation files
 a25ddd3 Bumped twig-extension dependency
