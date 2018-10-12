@@ -13,9 +13,6 @@ FacebookBundle
 [![Code Climate](https://codeclimate.com/github/core23/FacebookBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/FacebookBundle)
 [![Coverage Status](https://coveralls.io/repos/core23/FacebookBundle/badge.svg)](https://coveralls.io/r/core23/FacebookBundle)
 
-[![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/core23)
-[![Donate to this project using PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/gripp)
-
 This bundle adds some basic auth mechanisum for using the [Facebook API] inside symfony.
 
 ## Installation
