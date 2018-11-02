@@ -1,3 +1,10 @@
+02/11/2018 08:08  0.4.3  Autowiring
+79dc014 Added class aliases
+13e6d28 Removed donation from README
+acabf0d Added service aliases for autowiring
+8f498df Added support for latest twig extensions
+432fe12 Updated release config
+83f5a03 Updated style config
 29/09/2018 15:47  0.4.2  Support for latest core23/antispam-bundle
 ac5065e Added support for new antispam bundle version
 21/09/2018 17:11  0.4.1  Missing dependencies
