@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "core23/antispam-bundle": "^0.2 || ^0.3",
         "core23/twig-extensions": "^0.3 || ^1.0",
         "facebook/graph-sdk": "^5.0",
