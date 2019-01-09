@@ -1,3 +1,8 @@
+09/01/2019 20:35  0.5.1  Added support for latest antispam bundle
+26a6002 Added support for latest antispam bundle
+6250610 Updated cs-fixer config
+5af197c Use return types
+8fa0305 Fixed CS
 30/12/2018 22:12  0.5.0  Removed symfony deprecations
 08f4c51 Fixed phpunit config for release command
 46c2ef0 Use asserts for type safe root config nodes
