@@ -39,10 +39,12 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $app = $this->createMock(FacebookApp::class);
         $app->expects($this->once())->method('getAccessToken')
-            ->willReturn($token);
+            ->willReturn($token)
+        ;
 
         $this->facebook->expects($this->once())->method('getApp')
-            ->willReturn($app);
+            ->willReturn($app)
+        ;
 
         $feedResponse = [
             ['foo' => 'bar'],
@@ -50,15 +52,18 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $edge = $this->createMock(GraphEdge::class);
         $edge->expects($this->once())->method('asArray')
-            ->willReturn($feedResponse);
+            ->willReturn($feedResponse)
+        ;
 
         $response = $this->createMock(FacebookResponse::class);
         $response->expects($this->once())->method('getGraphEdge')
-            ->willReturn($edge);
+            ->willReturn($edge)
+        ;
 
         $this->facebook->method('get')
             ->with($this->equalTo('/0815/feed?fields=type,message,description,permalink_url,picture,created_time'), $this->equalTo($token))
-            ->willReturn($response);
+            ->willReturn($response)
+        ;
 
         $block = new Block();
 
