@@ -17,6 +17,7 @@ use Facebook\Facebook;
 use Facebook\FacebookApp;
 use Facebook\FacebookResponse;
 use Facebook\GraphNodes\GraphEdge;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -102,5 +103,17 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
             'template'           => '@Core23Facebook/Block/block_page_feed.html.twig',
         ], $blockContext);
+    }
+
+    public function testBuildEditForm(): void
+    {
+        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+
+        $block = new Block();
+
+        $formMapper = $this->createMock(FormMapper::class);
+        $formMapper->expects($this->once())->method('add');
+
+        $blockService->buildEditForm($formMapper, $block);
     }
 }
