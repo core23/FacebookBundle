@@ -15,14 +15,12 @@ use Core23\FacebookBundle\Session\SessionManager;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class SessionManagerTest extends TestCase
 {
     public function testIsAuthenticated(): void
     {
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->get('_CORE23_FACEBOOK_TOKEN')
             ->willReturn(true)
@@ -34,7 +32,6 @@ class SessionManagerTest extends TestCase
 
     public function testIsNotAuthenticated(): void
     {
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->get('_CORE23_FACEBOOK_TOKEN')
             ->willReturn(false)
@@ -46,7 +43,6 @@ class SessionManagerTest extends TestCase
 
     public function testGetUsername(): void
     {
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->get('_CORE23_FACEBOOK_NAME')
             ->willReturn('MyUser')
@@ -58,7 +54,6 @@ class SessionManagerTest extends TestCase
 
     public function testGetUsernameNotExist(): void
     {
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->get('_CORE23_FACEBOOK_NAME')
             ->willReturn(null)
@@ -72,7 +67,6 @@ class SessionManagerTest extends TestCase
     {
         $facebookSession = new FacebookSession('4711', 'YourName', 'YourToken', new DateTime());
 
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->set('_CORE23_FACEBOOK_ID', '4711')->shouldBeCalled();
         $session->set('_CORE23_FACEBOOK_NAME', 'YourName')->shouldBeCalled();
@@ -89,7 +83,6 @@ class SessionManagerTest extends TestCase
     {
         $facebookSession = new FacebookSession('4711', 'YourName', 'YourToken', null);
 
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->set('_CORE23_FACEBOOK_ID', '4711')->shouldBeCalled();
         $session->set('_CORE23_FACEBOOK_NAME', 'YourName')->shouldBeCalled();
@@ -104,7 +97,6 @@ class SessionManagerTest extends TestCase
 
     public function testClear(): void
     {
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->remove('_CORE23_FACEBOOK_ID')->shouldBeCalled();
         $session->remove('_CORE23_FACEBOOK_TOKEN')->shouldBeCalled();
@@ -119,7 +111,6 @@ class SessionManagerTest extends TestCase
     {
         $tomorrow = new DateTime('tomorrow');
 
-        /** @var ObjectProphecy&Session $session */
         $session = $this->prophesize(Session::class);
         $session->get('_CORE23_FACEBOOK_ID')
             ->willReturn('0815')

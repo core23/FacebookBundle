@@ -18,7 +18,6 @@ use Facebook\Facebook;
 use Facebook\FacebookApp;
 use Facebook\FacebookResponse;
 use Facebook\GraphNodes\GraphEdge;
-use PHPUnit\Framework\MockObject\MockObject;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
@@ -169,7 +168,6 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $block = new Block();
 
-        /** @var MockObject&FormMapper $formMapper */
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects($this->once())->method('add');
 

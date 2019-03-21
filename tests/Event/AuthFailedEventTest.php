@@ -11,7 +11,6 @@ namespace Core23\FacebookBundle\Tests\Event;
 
 use Core23\FacebookBundle\Event\AuthFailedEvent;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,7 +32,6 @@ class AuthFailedEventTest extends TestCase
 
     public function testSetResponse(): void
     {
-        /** @var ObjectProphecy&Response $reponse */
         $reponse = $this->prophesize(Response::class);
 
         $event = new AuthFailedEvent();
