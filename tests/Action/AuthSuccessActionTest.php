@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -73,6 +74,40 @@ class AuthSuccessActionTest extends TestCase
 
         $this->assertNotInstanceOf(RedirectResponse::class, $response);
         $this->assertSame(200, $response->getStatusCode());
+    }
+
+    public function testExecuteWithCaughtEvent(): void
+    {
+        $session = $this->prophesize(SessionInterface::class);
+
+        $this->sessionManager->isAuthenticated()
+            ->willReturn(true)
+        ;
+        $this->sessionManager->getSession()
+            ->willReturn($session)
+        ;
+        $this->sessionManager->getUsername()
+            ->willReturn('FooUser')
+        ;
+
+        $eventResponse = new Response();
+
+        $this->eventDispatcher->dispatch(Core23FacebookEvents::AUTH_SUCCESS, Argument::type(AuthSuccessEvent::class))
+            ->will(function ($args) use ($eventResponse) {
+                $args[1]->setResponse($eventResponse);
+            })
+        ;
+
+        $action = new AuthSuccessAction(
+            $this->twig->reveal(),
+            $this->router->reveal(),
+            $this->sessionManager->reveal(),
+            $this->eventDispatcher->reveal()
+        );
+
+        $response = $action();
+
+        $this->assertSame($eventResponse, $response);
     }
 
     public function testExecuteNoAuth(): void
