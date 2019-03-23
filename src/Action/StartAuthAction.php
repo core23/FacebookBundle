@@ -11,9 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\FacebookBundle\Action;
 
-use Core23\FacebookBundle\Connection\FacebookConnection;
+use Facebook\Facebook;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -25,7 +24,7 @@ final class StartAuthAction
     private $router;
 
     /**
-     * @var FacebookConnection
+     * @var Facebook
      */
     private $facebookConnection;
 
@@ -35,11 +34,11 @@ final class StartAuthAction
     private $permissions;
 
     /**
-     * @param RouterInterface    $router
-     * @param FacebookConnection $facebookConnection
-     * @param string[]           $permissions
+     * @param RouterInterface $router
+     * @param Facebook        $facebookConnection
+     * @param string[]        $permissions
      */
-    public function __construct(RouterInterface $router, FacebookConnection $facebookConnection, array $permissions)
+    public function __construct(RouterInterface $router, Facebook $facebookConnection, array $permissions)
     {
         $this->router             = $router;
         $this->facebookConnection = $facebookConnection;
@@ -47,9 +46,9 @@ final class StartAuthAction
     }
 
     /**
-     * @return Response
+     * @return RedirectResponse
      */
-    public function __invoke(): Response
+    public function __invoke(): RedirectResponse
     {
         $fb     = $this->facebookConnection;
         $helper = $fb->getRedirectLoginHelper();
