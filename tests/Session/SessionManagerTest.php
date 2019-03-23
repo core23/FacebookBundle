@@ -136,4 +136,16 @@ class SessionManagerTest extends TestCase
         $this->assertSame('TheToken', $facebookSession->getToken());
         $this->assertSame($tomorrow, $facebookSession->getExpireDate());
     }
+
+    public function testGetSessionWithNoAuth(): void
+    {
+        $session = $this->prophesize(Session::class);
+        $session->get('_CORE23_FACEBOOK_TOKEN')
+            ->willReturn(null)
+        ;
+
+        $manager = new SessionManager($session->reveal());
+
+        $this->assertNull($manager->getSession());
+    }
 }

@@ -13,7 +13,6 @@ namespace Core23\FacebookBundle\Action;
 
 use Core23\FacebookBundle\Core23FacebookEvents;
 use Core23\FacebookBundle\Event\AuthSuccessEvent;
-use Core23\FacebookBundle\Session\SessionManager;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -59,16 +58,16 @@ final class AuthSuccessAction
         SessionManagerInterface $sessionManager,
         EventDispatcherInterface $eventDispatcher
     ) {
-        $this->twig                = $twig;
-        $this->router              = $router;
-        $this->sessionManager      = $sessionManager;
-        $this->eventDispatcher     = $eventDispatcher;
+        $this->twig            = $twig;
+        $this->router          = $router;
+        $this->sessionManager  = $sessionManager;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
-     * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
+     * @throws LoaderError
      *
      * @return Response
      */
