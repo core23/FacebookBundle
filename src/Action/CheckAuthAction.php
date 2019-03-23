@@ -13,13 +13,15 @@ namespace Core23\FacebookBundle\Action;
 
 use Core23\FacebookBundle\Connection\FacebookConnection;
 use Core23\FacebookBundle\Session\Session;
+use Core23\FacebookBundle\Session\SessionInterface;
 use Core23\FacebookBundle\Session\SessionManager;
+use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Facebook\Exceptions\FacebookSDKException;
+use Facebook\Facebook;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -33,50 +35,42 @@ final class CheckAuthAction implements LoggerAwareInterface
     private $router;
 
     /**
-     * @var FacebookConnection
+     * @var Facebook
      */
     private $facebookConnection;
 
     /**
-     * @var SessionManager
+     * @var SessionManagerInterface
      */
     private $sessionManager;
 
     /**
-     * @param RouterInterface    $router
-     * @param FacebookConnection $facebookConnection
-     * @param SessionManager     $sessionManager
+     * @param RouterInterface         $router
+     * @param Facebook                $facebookConnection
+     * @param SessionManagerInterface $sessionManager
      */
     public function __construct(
         RouterInterface $router,
-        FacebookConnection $facebookConnection,
-        SessionManager $sessionManager
+        Facebook $facebookConnection,
+        SessionManagerInterface $sessionManager
     ) {
         $this->router             = $router;
         $this->facebookConnection = $facebookConnection;
         $this->sessionManager     = $sessionManager;
+        $this->logger             = new NullLogger();
     }
 
     /**
-     * @param Request $request
-     *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(): RedirectResponse
     {
-        $fb     = $this->facebookConnection;
-        $helper = $fb->getRedirectLoginHelper();
+        $session = $this->getSession();
 
-        try {
-            if ($token = $helper->getAccessToken()) {
-                $response = $fb->get('/me?fields=id,name', $token);
+        if (null !== $session) {
+            $this->sessionManager->store($session);
 
-                $this->sessionManager->store(Session::fromFacebookApi($token, $response->getGraphUser()));
-
-                return new RedirectResponse($this->generateUrl('core23_facebook_success'));
-            }
-        } catch (FacebookSDKException $exception) {
-            $this->logger->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
+            return new RedirectResponse($this->generateUrl('core23_facebook_success'));
         }
 
         return new RedirectResponse($this->generateUrl('core23_facebook_error'));
@@ -94,5 +88,29 @@ final class CheckAuthAction implements LoggerAwareInterface
     private function generateUrl(string $route, array $parameters = [], int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH): string
     {
         return $this->router->generate($route, $parameters, $referenceType);
+    }
+
+    /**
+     * @return SessionInterface|null
+     */
+    private function getSession(): ?SessionInterface
+    {
+        $fb     = $this->facebookConnection;
+        $helper = $fb->getRedirectLoginHelper();
+        $token  = $helper->getAccessToken();
+
+        if (null === $token) {
+            return null;
+        }
+
+        try {
+            $response = $fb->get('/me?fields=id,name', $token);
+
+            return Session::fromFacebookApi($token, $response->getGraphUser());
+        } catch (FacebookSDKException $exception) {
+            $this->logger->warning(sprintf('Facebook SDK Exception: %s', $exception->getMessage()));
+        }
+
+        return null;
     }
 }
