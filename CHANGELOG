@@ -1,3 +1,6 @@
+14/04/2019 14:54  1.1.0  Only use stable versions
+5c2825f [MINOR] Require stable versions
+895c222 [BUILD] Updated branch alias
 14/04/2019 14:34  1.0.0  First stable release
 fec9fc3 [BUILD] Removed dependency stage from build matrix
 c860d8c [BUILD] Removed current copyright date
