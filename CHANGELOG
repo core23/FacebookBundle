@@ -1,3 +1,22 @@
+14/04/2019 14:34  1.0.0  First stable release
+fec9fc3 [BUILD] Removed dependency stage from build matrix
+c860d8c [BUILD] Removed current copyright date
+17dca52 [TEST] Increased test converage
+23634c0 [TEST] Increased test converage
+5fbcdf2 [TEST] Increased test converage
+6fb3382 [BUILD] Minor internal refactoring
+9ab1c8c [MINOR] Use less specific interfaces/classes
+debb427 [BUILD] Fixed phpstan includes
+f959871 [BUILD] Cleanup phpstan errors
+ac880e7 [BUILD] Added more tests
+3402fe2 [BUILD] Cleanup phpstan errors
+fc38fb0 [BUILD] Fixed phpstan ignore list
+dc317e4 [BUILD] Added more tests
+dad8b17 [BUILD] Added weak_vendors when calling phpunit
+ce12c0f [PATCH] Updated CS Fixer config and run
+2281b99 [BUILD] Updated phpstan version
+464f1bd [BUILD] Fixed symfony test setup
+9537221 [MINOR] Removed support for outdated symfony versions
 09/01/2019 20:35  0.5.1  Added support for latest antispam bundle
 26a6002 Added support for latest antispam bundle
 6250610 Updated cs-fixer config
