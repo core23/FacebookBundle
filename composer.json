@@ -19,8 +19,8 @@
     ],
     "require": {
         "php": "^7.2",
-        "core23/antispam-bundle": "^0.2 || ^0.3 || ^0.4",
-        "core23/twig-extensions": "^0.3 || ^1.0",
+        "core23/antispam-bundle": "^1.0",
+        "core23/twig-extensions": "^1.0",
         "facebook/graph-sdk": "^5.0",
         "psr/log": "^1.0",
         "sonata-project/core-bundle": "^3.13.5",
