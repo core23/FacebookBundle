@@ -40,11 +40,11 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $token = $this->createMock(AccessToken::class);
 
         $app = $this->createMock(FacebookApp::class);
-        $app->expects($this->once())->method('getAccessToken')
+        $app->expects(static::once())->method('getAccessToken')
             ->willReturn($token)
         ;
 
-        $this->facebook->expects($this->once())->method('getApp')
+        $this->facebook->expects(static::once())->method('getApp')
             ->willReturn($app)
         ;
 
@@ -53,17 +53,17 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         ];
 
         $edge = $this->createMock(GraphEdge::class);
-        $edge->expects($this->once())->method('asArray')
+        $edge->expects(static::once())->method('asArray')
             ->willReturn($feedResponse)
         ;
 
         $response = $this->createMock(FacebookResponse::class);
-        $response->expects($this->once())->method('getGraphEdge')
+        $response->expects(static::once())->method('getGraphEdge')
             ->willReturn($edge)
         ;
 
         $this->facebook->method('get')
-            ->with($this->equalTo('/0815/feed?fields=type,message,description,permalink_url,picture,created_time'), $this->equalTo($token))
+            ->with(static::equalTo('/0815/feed?fields=type,message,description,permalink_url,picture,created_time'), static::equalTo($token))
             ->willReturn($response)
         ;
 
@@ -80,13 +80,13 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
         $blockService->execute($blockContext);
 
-        $this->assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
+        static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
-        $this->assertSame($blockContext, $this->templating->parameters['context']);
-        $this->assertInternalType('array', $this->templating->parameters['settings']);
-        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        static::assertSame($blockContext, $this->templating->parameters['context']);
+        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
-        $this->assertSame($feedResponse, $this->templating->parameters['feed']);
+        static::assertSame($feedResponse, $this->templating->parameters['feed']);
     }
 
     public function testExecuteThrowsFacebookException(): void
@@ -94,16 +94,16 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $token = $this->createMock(AccessToken::class);
 
         $app = $this->createMock(FacebookApp::class);
-        $app->expects($this->once())->method('getAccessToken')
+        $app->expects(static::once())->method('getAccessToken')
             ->willReturn($token)
         ;
 
-        $this->facebook->expects($this->once())->method('getApp')
+        $this->facebook->expects(static::once())->method('getApp')
             ->willReturn($app)
         ;
 
         $this->facebook->method('get')
-            ->with($this->equalTo('/0815/feed?fields=type,message,description,permalink_url,picture,created_time'), $this->equalTo($token))
+            ->with(static::equalTo('/0815/feed?fields=type,message,description,permalink_url,picture,created_time'), static::equalTo($token))
             ->willThrowException(new FacebookSDKException())
         ;
 
@@ -120,13 +120,13 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
         $blockService->execute($blockContext);
 
-        $this->assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
+        static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
-        $this->assertSame($blockContext, $this->templating->parameters['context']);
-        $this->assertInternalType('array', $this->templating->parameters['settings']);
-        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        static::assertSame($blockContext, $this->templating->parameters['context']);
+        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
-        $this->assertSame([], $this->templating->parameters['feed']);
+        static::assertSame([], $this->templating->parameters['feed']);
     }
 
     public function testDefaultSettings(): void
@@ -152,12 +152,12 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 
         $metadata = $blockService->getBlockMetadata('description');
 
-        $this->assertSame('block.service', $metadata->getTitle());
-        $this->assertSame('description', $metadata->getDescription());
-        $this->assertNotNull($metadata->getImage());
-        $this->assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
-        $this->assertSame('Core23FacebookBundle', $metadata->getDomain());
-        $this->assertSame([
+        static::assertSame('block.service', $metadata->getTitle());
+        static::assertSame('description', $metadata->getDescription());
+        static::assertNotNull($metadata->getImage());
+        static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        static::assertSame('Core23FacebookBundle', $metadata->getDomain());
+        static::assertSame([
             'class' => 'fa fa-facebook-official',
         ], $metadata->getOptions());
     }
@@ -169,7 +169,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $block = new Block();
 
         $formMapper = $this->createMock(FormMapper::class);
-        $formMapper->expects($this->once())->method('add');
+        $formMapper->expects(static::once())->method('add');
 
         $blockService->buildEditForm($formMapper, $block);
     }

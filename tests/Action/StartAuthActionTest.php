@@ -50,6 +50,6 @@ class StartAuthActionTest extends TestCase
             ['DUMMY_PERMISSION']
         );
 
-        $this->assertSame('https://facebook/login', $action()->getTargetUrl());
+        static::assertSame('https://facebook/login', $action()->getTargetUrl());
     }
 }

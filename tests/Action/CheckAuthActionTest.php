@@ -80,7 +80,7 @@ class CheckAuthActionTest extends TestCase
 
         $response = $action();
 
-        $this->assertSame('/success', $response->getTargetUrl());
+        static::assertSame('/success', $response->getTargetUrl());
     }
 
     public function testExecuteWithApiError(): void
@@ -111,7 +111,7 @@ class CheckAuthActionTest extends TestCase
 
         $response = $action();
 
-        $this->assertSame('/error', $response->getTargetUrl());
+        static::assertSame('/error', $response->getTargetUrl());
     }
 
     public function testExecuteWithNoAccessToken(): void
@@ -134,7 +134,7 @@ class CheckAuthActionTest extends TestCase
 
         $response = $action();
 
-        $this->assertSame('/error', $response->getTargetUrl());
+        static::assertSame('/error', $response->getTargetUrl());
     }
 
     /**
