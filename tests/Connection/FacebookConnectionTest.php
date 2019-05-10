@@ -19,20 +19,20 @@ class FacebookConnectionTest extends TestCase
     {
         $connection = new FacebookConnection('key', 'secret');
 
-        $this->assertInstanceOf(Facebook::class, $connection);
+        static::assertInstanceOf(Facebook::class, $connection);
     }
 
     public function testGetApiId(): void
     {
         $connection = new FacebookConnection('key', 'secret');
 
-        $this->assertSame('key', $connection->getApiId());
+        static::assertSame('key', $connection->getApiId());
     }
 
     public function testGetSharedSecre(): void
     {
         $connection = new FacebookConnection('key', 'secret');
 
-        $this->assertSame('secret', $connection->getSharedSecret());
+        static::assertSame('secret', $connection->getSharedSecret());
     }
 }
