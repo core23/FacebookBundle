@@ -13,7 +13,6 @@ namespace Core23\FacebookBundle\Action;
 
 use Core23\FacebookBundle\Core23FacebookEvents;
 use Core23\FacebookBundle\Event\AuthFailedEvent;
-use Core23\FacebookBundle\Session\SessionManager;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
