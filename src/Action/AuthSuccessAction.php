@@ -14,11 +14,11 @@ namespace Core23\FacebookBundle\Action;
 use Core23\FacebookBundle\Core23FacebookEvents;
 use Core23\FacebookBundle\Event\AuthSuccessEvent;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -84,7 +84,7 @@ final class AuthSuccessAction
         }
 
         $event = new AuthSuccessEvent($session);
-        $this->eventDispatcher->dispatch(Core23FacebookEvents::AUTH_SUCCESS, $event);
+        $this->eventDispatcher->dispatch($event, Core23FacebookEvents::AUTH_SUCCESS);
 
         if ($response = $event->getResponse()) {
             return $response;

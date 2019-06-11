@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Core23\FacebookBundle\Event;
 
 use Core23\FacebookBundle\Session\SessionInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\EventDispatcher\Event;
 
 final class AuthSuccessEvent extends Event
 {

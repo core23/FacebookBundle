@@ -11,8 +11,8 @@ namespace Core23\FacebookBundle\Tests\Event;
 
 use Core23\FacebookBundle\Event\AuthFailedEvent;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class AuthFailedEventTest extends TestCase
 {
