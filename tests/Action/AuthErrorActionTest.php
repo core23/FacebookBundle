@@ -15,11 +15,11 @@ use Core23\FacebookBundle\Event\AuthFailedEvent;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
 class AuthErrorActionTest extends TestCase
@@ -50,7 +50,7 @@ class AuthErrorActionTest extends TestCase
             ->shouldBeCalled()
         ;
 
-        $this->eventDispatcher->dispatch(Core23FacebookEvents::AUTH_ERROR, Argument::type(AuthFailedEvent::class))
+        $this->eventDispatcher->dispatch(Argument::type(AuthFailedEvent::class), Core23FacebookEvents::AUTH_ERROR)
             ->shouldBeCalled()
         ;
 
@@ -79,9 +79,9 @@ class AuthErrorActionTest extends TestCase
 
         $eventResponse = new Response();
 
-        $this->eventDispatcher->dispatch(Core23FacebookEvents::AUTH_ERROR, Argument::type(AuthFailedEvent::class))
+        $this->eventDispatcher->dispatch(Argument::type(AuthFailedEvent::class), Core23FacebookEvents::AUTH_ERROR)
             ->will(function ($args) use ($eventResponse) {
-                $args[1]->setResponse($eventResponse);
+                $args[0]->setResponse($eventResponse);
             })
         ;
 

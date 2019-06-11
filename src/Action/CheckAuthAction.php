@@ -11,10 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\FacebookBundle\Action;
 
-use Core23\FacebookBundle\Connection\FacebookConnection;
 use Core23\FacebookBundle\Session\Session;
 use Core23\FacebookBundle\Session\SessionInterface;
-use Core23\FacebookBundle\Session\SessionManager;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
