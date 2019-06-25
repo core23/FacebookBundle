@@ -13,7 +13,7 @@ use Core23\FacebookBundle\Connection\FacebookConnection;
 use Facebook\Facebook;
 use PHPUnit\Framework\TestCase;
 
-class FacebookConnectionTest extends TestCase
+final class FacebookConnectionTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

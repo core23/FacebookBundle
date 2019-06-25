@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class SessionManagerTest extends TestCase
+final class SessionManagerTest extends TestCase
 {
     public function testIsAuthenticated(): void
     {

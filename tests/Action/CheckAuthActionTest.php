@@ -25,7 +25,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class CheckAuthActionTest extends TestCase
+final class CheckAuthActionTest extends TestCase
 {
     private $router;
 
