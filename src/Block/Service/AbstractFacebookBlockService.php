@@ -28,11 +28,6 @@ abstract class AbstractFacebookBlockService extends AbstractAdminBlockService im
      */
     private $facebook;
 
-    /**
-     * @param string          $name
-     * @param EngineInterface $templating
-     * @param Facebook        $connection
-     */
     public function __construct(string $name, EngineInterface $templating, Facebook $connection)
     {
         parent::__construct($name, $templating);
@@ -41,17 +36,11 @@ abstract class AbstractFacebookBlockService extends AbstractAdminBlockService im
         $this->logger   = new NullLogger();
     }
 
-    /**
-     * @return Facebook
-     */
     protected function getFacebook(): Facebook
     {
         return $this->facebook;
     }
 
-    /**
-     * @return AccessToken
-     */
     final protected function getAccessToken(): AccessToken
     {
         return $this->facebook->getApp()->getAccessToken();

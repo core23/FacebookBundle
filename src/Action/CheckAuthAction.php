@@ -42,11 +42,6 @@ final class CheckAuthAction implements LoggerAwareInterface
      */
     private $sessionManager;
 
-    /**
-     * @param RouterInterface         $router
-     * @param Facebook                $facebookConnection
-     * @param SessionManagerInterface $sessionManager
-     */
     public function __construct(
         RouterInterface $router,
         Facebook $facebookConnection,
@@ -58,9 +53,6 @@ final class CheckAuthAction implements LoggerAwareInterface
         $this->logger             = new NullLogger();
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function __invoke(): RedirectResponse
     {
         $session = $this->getSession();
@@ -88,9 +80,6 @@ final class CheckAuthAction implements LoggerAwareInterface
         return $this->router->generate($route, $parameters, $referenceType);
     }
 
-    /**
-     * @return SessionInterface|null
-     */
     private function getSession(): ?SessionInterface
     {
         $fb     = $this->facebookConnection;

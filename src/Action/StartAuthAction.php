@@ -34,9 +34,7 @@ final class StartAuthAction
     private $permissions;
 
     /**
-     * @param RouterInterface $router
-     * @param Facebook        $facebookConnection
-     * @param string[]        $permissions
+     * @param string[] $permissions
      */
     public function __construct(RouterInterface $router, Facebook $facebookConnection, array $permissions)
     {
@@ -45,9 +43,6 @@ final class StartAuthAction
         $this->permissions        = $permissions;
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function __invoke(): RedirectResponse
     {
         $fb     = $this->facebookConnection;

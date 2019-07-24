@@ -13,23 +13,11 @@ namespace Core23\FacebookBundle\Session;
 
 interface SessionInterface
 {
-    /**
-     * @return string
-     */
     public function getFacebookId(): string;
 
-    /**
-     * @return string
-     */
     public function getName(): string;
 
-    /**
-     * @return string
-     */
     public function getToken(): string;
 
-    /**
-     * @return \DateTime|null
-     */
     public function getExpireDate(): ?\DateTime;
 }
