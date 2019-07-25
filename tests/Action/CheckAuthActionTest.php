@@ -137,9 +137,6 @@ final class CheckAuthActionTest extends TestCase
         static::assertSame('/error', $response->getTargetUrl());
     }
 
-    /**
-     * @return ObjectProphecy
-     */
     private function prepareAccessToken(): ObjectProphecy
     {
         $accessToken = $this->prophesize(AccessToken::class);

@@ -38,10 +38,6 @@ final class Core23FacebookExtension extends Extension
         $this->configureApi($container, $config);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureApi(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23_facebook.api.app_id', $config['api']['app_id']);

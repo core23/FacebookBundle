@@ -36,12 +36,6 @@ final class Session implements SessionInterface
      */
     private $expireDate;
 
-    /**
-     * @param string         $facebookId
-     * @param string         $name
-     * @param string         $token
-     * @param \DateTime|null $expireDate
-     */
     public function __construct(string $facebookId, string $name, string $token, ?\DateTime $expireDate)
     {
         $this->facebookId = $facebookId;
@@ -82,12 +76,6 @@ final class Session implements SessionInterface
         return $this->expireDate;
     }
 
-    /**
-     * @param AccessToken $token
-     * @param GraphUser   $graphUser
-     *
-     * @return SessionInterface
-     */
     public static function fromFacebookApi(AccessToken $token, GraphUser $graphUser): SessionInterface
     {
         return new self($graphUser->getId() ?: '', $graphUser->getName() ?: '', $token->getValue(), $token->getExpiresAt());

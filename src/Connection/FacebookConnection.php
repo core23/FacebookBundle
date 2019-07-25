@@ -27,9 +27,6 @@ final class FacebookConnection extends Facebook
     private $sharedSecret;
 
     /**
-     * @param string $apiKey
-     * @param string $sharedSecret
-     *
      * @throws FacebookSDKException
      */
     public function __construct(string $apiKey, string $sharedSecret)
@@ -43,17 +40,11 @@ final class FacebookConnection extends Facebook
         $this->sharedSecret = $sharedSecret;
     }
 
-    /**
-     * @return string
-     */
     public function getApiId(): string
     {
         return $this->apiId;
     }
 
-    /**
-     * @return string
-     */
     public function getSharedSecret(): string
     {
         return $this->sharedSecret;

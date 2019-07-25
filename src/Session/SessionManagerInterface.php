@@ -15,21 +15,14 @@ interface SessionManagerInterface
 {
     /**
      * Returns the auth status.
-     *
-     * @return bool
      */
     public function isAuthenticated(): bool;
 
     /**
      * Get the session username.
-     *
-     * @return string|null
      */
     public function getUsername(): ?string;
 
-    /**
-     * @param SessionInterface $session
-     */
     public function store(SessionInterface $session): void;
 
     /**
@@ -37,8 +30,5 @@ interface SessionManagerInterface
      */
     public function clear(): void;
 
-    /**
-     * @return SessionInterface|null
-     */
     public function getSession(): ?SessionInterface;
 }
