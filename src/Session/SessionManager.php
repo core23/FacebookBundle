@@ -34,25 +34,16 @@ final class SessionManager implements SessionManagerInterface
         $this->session = $session;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isAuthenticated(): bool
     {
         return (bool) $this->session->get(static::SESSION_FB_TOKEN);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUsername(): ?string
     {
         return $this->session->get(static::SESSION_FB_NAME);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function store(SessionInterface $session): void
     {
         $this->session->set(static::SESSION_FB_ID, $session->getFacebookId());
@@ -61,9 +52,6 @@ final class SessionManager implements SessionManagerInterface
         $this->session->set(static::SESSION_FB_EXPIRES, $session->getExpireDate());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function clear(): void
     {
         $this->session->remove(static::SESSION_FB_ID);
@@ -72,9 +60,6 @@ final class SessionManager implements SessionManagerInterface
         $this->session->remove(static::SESSION_FB_EXPIRES);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSession(): ?SessionInterface
     {
         if (!$this->isAuthenticated()) {

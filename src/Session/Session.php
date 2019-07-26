@@ -44,33 +44,21 @@ final class Session implements SessionInterface
         $this->expireDate = $expireDate;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFacebookId(): string
     {
         return $this->facebookId;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getToken(): string
     {
         return $this->token;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExpireDate(): ?\DateTime
     {
         return $this->expireDate;
