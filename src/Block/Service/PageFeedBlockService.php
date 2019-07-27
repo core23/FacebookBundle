@@ -24,9 +24,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class PageFeedBlockService extends AbstractFacebookBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $parameters = [
@@ -39,9 +36,6 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         return $this->renderResponse($blockContext->getTemplate(), $parameters, $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -75,9 +69,6 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -94,9 +85,6 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         $resolver->setRequired(['id']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23FacebookBundle', [
