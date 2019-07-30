@@ -13,19 +13,9 @@ use Core23\FacebookBundle\Event\AuthSuccessEvent;
 use Core23\FacebookBundle\Session\SessionInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Contracts\EventDispatcher\Event;
 
 final class AuthSuccessEventTest extends TestCase
 {
-    public function testCreation(): void
-    {
-        $session = $this->prophesize(SessionInterface::class);
-
-        $event = new AuthSuccessEvent($session->reveal());
-
-        static::assertInstanceOf(Event::class, $event);
-    }
-
     public function testGetUsername(): void
     {
         $session = $this->prophesize(SessionInterface::class);

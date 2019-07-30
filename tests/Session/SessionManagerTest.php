@@ -10,7 +10,6 @@
 namespace Core23\FacebookBundle\Tests\Session;
 
 use Core23\FacebookBundle\Session\Session as FacebookSession;
-use Core23\FacebookBundle\Session\SessionInterface;
 use Core23\FacebookBundle\Session\SessionManager;
 use DateTime;
 use PHPUnit\Framework\TestCase;
@@ -75,8 +74,6 @@ final class SessionManagerTest extends TestCase
 
         $manager = new SessionManager($session->reveal());
         $manager->store($facebookSession);
-
-        static::assertTrue(true);
     }
 
     public function testStoreWithNoExpiryDate(): void
@@ -91,8 +88,6 @@ final class SessionManagerTest extends TestCase
 
         $manager = new SessionManager($session->reveal());
         $manager->store($facebookSession);
-
-        static::assertTrue(true);
     }
 
     public function testClear(): void
@@ -127,7 +122,6 @@ final class SessionManagerTest extends TestCase
 
         $manager = new SessionManager($session->reveal());
 
-        /** @var SessionInterface $facebookSession */
         $facebookSession = $manager->getSession();
 
         static::assertNotNull($facebookSession);

@@ -10,18 +10,10 @@
 namespace Core23\FacebookBundle\Tests\Connection;
 
 use Core23\FacebookBundle\Connection\FacebookConnection;
-use Facebook\Facebook;
 use PHPUnit\Framework\TestCase;
 
 final class FacebookConnectionTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        $connection = new FacebookConnection('key', 'secret');
-
-        static::assertInstanceOf(Facebook::class, $connection);
-    }
-
     public function testGetApiId(): void
     {
         $connection = new FacebookConnection('key', 'secret');
