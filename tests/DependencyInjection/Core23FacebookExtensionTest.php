@@ -62,7 +62,7 @@ final class Core23FacebookExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasService('core23_facebook.block.page_feed', PageFeedBlockService::class);
     }
 
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [
             new Core23FacebookExtension(),
