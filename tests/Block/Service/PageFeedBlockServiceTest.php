@@ -18,11 +18,11 @@ use Facebook\Facebook;
 use Facebook\FacebookApp;
 use Facebook\FacebookResponse;
 use Facebook\GraphNodes\GraphEdge;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
 final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
 {
@@ -146,11 +146,11 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
-    public function testGetBlockMetadata(): void
+    public function testGetMetadata(): void
     {
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
 
-        $metadata = $blockService->getBlockMetadata('description');
+        $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
         static::assertSame('description', $metadata->getDescription());
@@ -162,7 +162,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         ], $metadata->getOptions());
     }
 
-    public function testBuildEditForm(): void
+    public function testConfigureEditForm(): void
     {
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
 
@@ -171,6 +171,6 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects(static::once())->method('add');
 
-        $blockService->buildEditForm($formMapper, $block);
+        $blockService->configureEditForm($formMapper, $block);
     }
 }

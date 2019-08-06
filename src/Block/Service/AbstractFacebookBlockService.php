@@ -16,10 +16,14 @@ use Facebook\Facebook;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
+use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-abstract class AbstractFacebookBlockService extends AbstractAdminBlockService implements LoggerAwareInterface
+abstract class AbstractFacebookBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
@@ -34,6 +38,15 @@ abstract class AbstractFacebookBlockService extends AbstractAdminBlockService im
 
         $this->facebook = $connection;
         $this->logger   = new NullLogger();
+    }
+
+    public function configureCreateForm(FormMapper $form, BlockInterface $block): void
+    {
+        $this->configureEditForm($form, $block);
+    }
+
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void
+    {
     }
 
     protected function getFacebook(): Facebook

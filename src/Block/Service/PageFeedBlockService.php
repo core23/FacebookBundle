@@ -12,9 +12,10 @@ declare(strict_types=1);
 namespace Core23\FacebookBundle\Block\Service;
 
 use Facebook\Exceptions\FacebookSDKException;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Meta\Metadata;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -36,7 +37,7 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         return $this->renderResponse($blockContext->getTemplate(), $parameters, $response);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
+    public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
@@ -85,9 +86,9 @@ final class PageFeedBlockService extends AbstractFacebookBlockService
         $resolver->setRequired(['id']);
     }
 
-    public function getBlockMetadata($code = null)
+    public function getMetadata(): MetadataInterface
     {
-        return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23FacebookBundle', [
+        return new Metadata($this->getName(), null, null, 'Core23FacebookBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }
