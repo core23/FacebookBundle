@@ -77,7 +77,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
         ]);
 
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->templating, $this->facebook);
         $blockService->execute($blockContext);
 
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
@@ -117,7 +117,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
         ]);
 
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->templating, $this->facebook);
         $blockService->execute($blockContext);
 
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
@@ -131,7 +131,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
 
     public function testDefaultSettings(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->templating, $this->facebook);
         $blockContext = $this->getBlockContext($blockService);
 
         $this->assertSettings([
@@ -148,7 +148,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
 
     public function testGetMetadata(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->templating, $this->facebook);
 
         $metadata = $blockService->getMetadata();
 
@@ -163,7 +163,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
 
     public function testConfigureEditForm(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->templating, $this->facebook);
 
         $block = new Block();
 
