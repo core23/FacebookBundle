@@ -3,7 +3,7 @@
   <services>
     <service id="core23_facebook.block.page_feed" class="Core23\FacebookBundle\Block\Service\PageFeedBlockService">
       <tag name="sonata.block"/>
-      <argument>core23_facebook.block.page_feed</argument>
+      <argument>null</argument>
       <argument type="service" id="sonata.templating"/>
       <argument type="service" id="core23_facebook.connection"/>
       <call method="setLogger">

@@ -34,7 +34,7 @@ abstract class AbstractFacebookBlockService extends AbstractBlockService impleme
 
     public function __construct(string $name, EngineInterface $templating, Facebook $connection)
     {
-        parent::__construct($name, $templating);
+        parent::__construct($templating);
 
         $this->facebook = $connection;
         $this->logger   = new NullLogger();
@@ -47,6 +47,11 @@ abstract class AbstractFacebookBlockService extends AbstractBlockService impleme
 
     public function validate(ErrorElement $errorElement, BlockInterface $block): void
     {
+    }
+
+    public function getName(): string
+    {
+        return $this->getMetadata()->getTitle();
     }
 
     protected function getFacebook(): Facebook
