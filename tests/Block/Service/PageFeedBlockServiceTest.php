@@ -18,13 +18,13 @@ use Facebook\Facebook;
 use Facebook\FacebookApp;
 use Facebook\FacebookResponse;
 use Facebook\GraphNodes\GraphEdge;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
+final class PageFeedBlockServiceTest extends BlockServiceTestCase
 {
     private $facebook;
 
@@ -83,7 +83,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
         static::assertSame($feedResponse, $this->templating->parameters['feed']);
@@ -123,7 +123,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
         static::assertSame([], $this->templating->parameters['feed']);
@@ -146,14 +146,13 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
-    public function testGetBlockMetadata(): void
+    public function testGetMetadata(): void
     {
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
 
-        $metadata = $blockService->getBlockMetadata('description');
+        $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23FacebookBundle', $metadata->getDomain());
@@ -162,7 +161,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         ], $metadata->getOptions());
     }
 
-    public function testBuildEditForm(): void
+    public function testConfigureEditForm(): void
     {
         $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
 
@@ -171,6 +170,6 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects(static::once())->method('add');
 
-        $blockService->buildEditForm($formMapper, $block);
+        $blockService->configureEditForm($formMapper, $block);
     }
 }
