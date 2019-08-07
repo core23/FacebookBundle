@@ -24,7 +24,7 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
+final class PageFeedBlockServiceTest extends BlockServiceTestCase
 {
     private $facebook;
 
@@ -83,7 +83,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
         static::assertSame($feedResponse, $this->templating->parameters['feed']);
@@ -123,7 +123,7 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
 
         static::assertSame([], $this->templating->parameters['feed']);
@@ -153,7 +153,6 @@ final class PageFeedBlockServiceTest extends AbstractBlockServiceTestCase
         $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23FacebookBundle', $metadata->getDomain());
