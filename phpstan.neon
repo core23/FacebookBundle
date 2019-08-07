@@ -14,3 +14,6 @@ parameters:
         -
             message: '#Property .*::\$.* has no typehint specified.#'
             path: tests/
+
+        # Deprecated signatures
+        - '#Constructor of class Core23\\FacebookBundle\\Block\\Service\\AbstractFacebookBlockService has an unused parameter \$name.#'
