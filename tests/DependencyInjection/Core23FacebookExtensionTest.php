@@ -38,10 +38,10 @@ final class Core23FacebookExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('core23_facebook.api.app_secret', 'bar_secret');
         $this->assertContainerBuilderHasParameter('core23_facebook.api.permissions', ['public_profile', 'user_likes']);
 
-        $this->assertContainerBuilderHasService(StartAuthAction::class, StartAuthAction::class);
-        $this->assertContainerBuilderHasService(AuthErrorAction::class, AuthErrorAction::class);
-        $this->assertContainerBuilderHasService(AuthSuccessAction::class, AuthSuccessAction::class);
-        $this->assertContainerBuilderHasService(CheckAuthAction::class, CheckAuthAction::class);
+        $this->assertContainerBuilderHasService(StartAuthAction::class);
+        $this->assertContainerBuilderHasService(AuthErrorAction::class);
+        $this->assertContainerBuilderHasService(AuthSuccessAction::class);
+        $this->assertContainerBuilderHasService(CheckAuthAction::class);
 
         $this->assertContainerBuilderHasAlias(SessionManagerInterface::class, 'core23_facebook.session.manager');
         $this->assertContainerBuilderHasAlias(FacebookConnection::class, 'core23_facebook.connection');
