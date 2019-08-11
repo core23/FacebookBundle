@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="Core23\FacebookBundle\Action\StartAuthAction" class="Core23\FacebookBundle\Action\StartAuthAction" public="true">
+    <defaults public="true"/>
+    <service id="Core23\FacebookBundle\Action\StartAuthAction">
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.connection"/>
       <argument>%core23_facebook.api.permissions%</argument>
     </service>
-    <service id="Core23\FacebookBundle\Action\AuthErrorAction" class="Core23\FacebookBundle\Action\AuthErrorAction" public="true">
+    <service id="Core23\FacebookBundle\Action\AuthErrorAction">
       <argument type="service" id="twig"/>
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.session.manager"/>
       <argument type="service" id="event_dispatcher"/>
     </service>
-    <service id="Core23\FacebookBundle\Action\AuthSuccessAction" class="Core23\FacebookBundle\Action\AuthSuccessAction" public="true">
+    <service id="Core23\FacebookBundle\Action\AuthSuccessAction">
       <argument type="service" id="twig"/>
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.session.manager"/>
       <argument type="service" id="event_dispatcher"/>
     </service>
-    <service id="Core23\FacebookBundle\Action\CheckAuthAction" class="Core23\FacebookBundle\Action\CheckAuthAction" public="true">
+    <service id="Core23\FacebookBundle\Action\CheckAuthAction">
       <argument type="service" id="router"/>
       <argument type="service" id="core23_facebook.connection"/>
       <argument type="service" id="core23_facebook.session.manager"/>
