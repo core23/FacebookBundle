@@ -153,8 +153,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
         $metadata = $blockService->getMetadata();
 
         static::assertSame('core23_facebook.block.page_feed', $metadata->getTitle());
-        static::assertNotNull($metadata->getImage());
-        static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        static::assertNull($metadata->getImage());
         static::assertSame('Core23FacebookBundle', $metadata->getDomain());
         static::assertSame([
             'class' => 'fa fa-facebook-official',
