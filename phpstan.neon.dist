@@ -23,3 +23,8 @@ parameters:
 
         # Deprecated signatures
         - '#Constructor of class Core23\\FacebookBundle\\Block\\Service\\AbstractFacebookBlockService has an unused parameter \$name.#'
+
+        -
+            message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
+            count: 1
+            path: src/DependencyInjection/Configuration.php
