@@ -49,22 +49,8 @@ final class StartAuthAction
         $helper = $fb->getRedirectLoginHelper();
 
         return new RedirectResponse($helper->getLoginUrl(
-            $this->generateUrl('core23_facebook_check', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            $this->router->generate('core23_facebook_check', [], UrlGeneratorInterface::ABSOLUTE_URL),
             $this->permissions
         ));
-    }
-
-    /**
-     * Generates a URL from the given parameters.
-     *
-     * @param string $route         The name of the route
-     * @param array  $parameters    An array of parameters
-     * @param int    $referenceType The type of reference (one of the constants in UrlGeneratorInterface)
-     *
-     * @return string The generated URL
-     */
-    private function generateUrl(string $route, array $parameters = [], int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH): string
-    {
-        return $this->router->generate($route, $parameters, $referenceType);
     }
 }

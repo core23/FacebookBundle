@@ -24,7 +24,6 @@ use Facebook\Helpers\FacebookRedirectLoginHelper;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 final class CheckAuthActionTest extends TestCase
@@ -69,7 +68,7 @@ final class CheckAuthActionTest extends TestCase
             ->shouldBeCalled()
         ;
 
-        $this->router->generate('core23_facebook_success', [], UrlGeneratorInterface::ABSOLUTE_PATH)
+        $this->router->generate('core23_facebook_success')
             ->willReturn('/success')
             ->shouldBeCalled()
         ;
@@ -100,7 +99,7 @@ final class CheckAuthActionTest extends TestCase
             ->willThrow(FacebookSDKException::class)
         ;
 
-        $this->router->generate('core23_facebook_error', [], UrlGeneratorInterface::ABSOLUTE_PATH)
+        $this->router->generate('core23_facebook_error')
             ->willReturn('/error')
             ->shouldBeCalled()
         ;
@@ -123,7 +122,7 @@ final class CheckAuthActionTest extends TestCase
             ->willReturn(null)
         ;
 
-        $this->router->generate('core23_facebook_error', [], UrlGeneratorInterface::ABSOLUTE_PATH)
+        $this->router->generate('core23_facebook_error')
             ->willReturn('/error')
             ->shouldBeCalled()
         ;
