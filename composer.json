@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "php": "^7.2",
+    "php": "^7.3",
     "core23/antispam-bundle": "^1.0",
     "core23/twig-extensions": "^1.0",
     "facebook/graph-sdk": "^5.0",
