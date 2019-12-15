@@ -21,7 +21,7 @@ use Sonata\BlockBundle\Block\Service\EditableBlockService;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Validator\ErrorElement;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Twig\Environment;
 
 abstract class AbstractFacebookBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
@@ -32,9 +32,9 @@ abstract class AbstractFacebookBlockService extends AbstractBlockService impleme
      */
     private $facebook;
 
-    public function __construct(string $name, EngineInterface $templating, Facebook $connection)
+    public function __construct(Environment $twig, Facebook $connection)
     {
-        parent::__construct($templating);
+        parent::__construct($twig);
 
         $this->facebook = $connection;
         $this->logger   = new NullLogger();

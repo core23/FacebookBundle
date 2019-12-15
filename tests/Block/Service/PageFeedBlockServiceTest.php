@@ -21,8 +21,8 @@ use Facebook\GraphNodes\GraphEdge;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
-use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 final class PageFeedBlockServiceTest extends BlockServiceTestCase
 {
@@ -77,16 +77,25 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
         ]);
 
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
-        $blockService->execute($blockContext);
+        $response = new Response();
 
-        static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
+        $this->twig->expects(static::once())->method('render')
+            ->with(
+                '@Core23Facebook/Block/block_page_feed.html.twig',
+                [
+                    'context'    => $blockContext,
+                    'settings'   => $blockContext->getSettings(),
+                    'block'      => $blockContext->getBlock(),
+                    'feed'       => $feedResponse,
+                ]
+            )
+            ->willReturn('TWIG_CONTENT')
+        ;
 
-        static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertIsArray($this->templating->parameters['settings']);
-        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        $blockService = new PageFeedBlockService($this->twig, $this->facebook);
 
-        static::assertSame($feedResponse, $this->templating->parameters['feed']);
+        static::assertSame($response, $blockService->execute($blockContext, $response));
+        static::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testExecuteThrowsFacebookException(): void
@@ -117,21 +126,30 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
             'fields'             => 'type,message,description,permalink_url,picture,created_time',
         ]);
 
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
-        $blockService->execute($blockContext);
+        $response = new Response();
 
-        static::assertSame('@Core23Facebook/Block/block_page_feed.html.twig', $this->templating->view);
+        $this->twig->expects(static::once())->method('render')
+            ->with(
+                '@Core23Facebook/Block/block_page_feed.html.twig',
+                [
+                    'context'    => $blockContext,
+                    'settings'   => $blockContext->getSettings(),
+                    'block'      => $blockContext->getBlock(),
+                    'feed'       => [],
+                ]
+            )
+            ->willReturn('TWIG_CONTENT')
+        ;
 
-        static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertIsArray($this->templating->parameters['settings']);
-        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        $blockService = new PageFeedBlockService($this->twig, $this->facebook);
 
-        static::assertSame([], $this->templating->parameters['feed']);
+        static::assertSame($response, $blockService->execute($blockContext, $response));
+        static::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testDefaultSettings(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->twig, $this->facebook);
         $blockContext = $this->getBlockContext($blockService);
 
         $this->assertSettings([
@@ -148,7 +166,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
 
     public function testGetMetadata(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->twig, $this->facebook);
 
         $metadata = $blockService->getMetadata();
 
@@ -162,7 +180,7 @@ final class PageFeedBlockServiceTest extends BlockServiceTestCase
 
     public function testConfigureEditForm(): void
     {
-        $blockService = new PageFeedBlockService('block.service', $this->templating, $this->facebook);
+        $blockService = new PageFeedBlockService($this->twig, $this->facebook);
 
         $block = new Block();
 
