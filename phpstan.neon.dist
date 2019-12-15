@@ -21,8 +21,10 @@ parameters:
             message: '#Property .*::\$.* has no typehint specified.#'
             path: tests/
 
-        # Deprecated signatures
-        - '#Constructor of class Core23\\FacebookBundle\\Block\\Service\\AbstractFacebookBlockService has an unused parameter \$name.#'
+        -
+            message: "#^Call to an undefined method Twig\\\\Environment::expects\\(\\)\\.$#"
+            count: 2
+            path: tests/Block/Service/PageFeedBlockServiceTest.php
 
         -
             message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
