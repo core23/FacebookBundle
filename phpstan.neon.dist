@@ -19,8 +19,3 @@ parameters:
         -
             message: '#Property .*::\$.* has no typehint specified.#'
             path: tests/
-
-        -
-            message: "#^Call to an undefined method Twig\\\\Environment::expects\\(\\)\\.$#"
-            count: 2
-            path: tests/Block/Service/PageFeedBlockServiceTest.php

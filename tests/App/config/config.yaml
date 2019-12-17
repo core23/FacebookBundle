@@ -1,0 +1,11 @@
+framework:
+    secret: secret
+
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+
+core23_facebook:
+    api:
+        app_id: 'MY_ID'
+        app_secret: 'MY_SECRET'
