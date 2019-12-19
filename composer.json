@@ -20,7 +20,6 @@
   ],
   "require": {
     "php": "^7.3",
-    "core23/antispam-bundle": "^1.0",
     "core23/twig-extensions": "^1.0",
     "facebook/graph-sdk": "^5.0",
     "psr/log": "^1.0",
@@ -36,6 +35,7 @@
     "symfony/http-kernel": "^4.2",
     "symfony/routing": "^4.2",
     "symfony/twig-bundle": "^4.2",
+    "twig/intl-extra": "^2.12 || ^3.0",
     "twig/twig": "^2.4"
   },
   "require-dev": {
