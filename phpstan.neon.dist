@@ -4,8 +4,6 @@ includes:
 parameters:
     level: max
 
-    checkMissingIterableValueType: false
-
     paths:
         - src
         - tests

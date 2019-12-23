@@ -11,9 +11,29 @@ parameters:
 			path: src/Action/AuthSuccessAction.php
 
 		-
+			message: "#^Method Core23\\\\FacebookBundle\\\\Block\\\\Service\\\\PageFeedBlockService\\:\\:getData\\(\\) has parameter \\$settings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/Service/PageFeedBlockService.php
+
+		-
+			message: "#^Method Core23\\\\FacebookBundle\\\\Block\\\\Service\\\\PageFeedBlockService\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/Service/PageFeedBlockService.php
+
+		-
 			message: "#^Cannot call method scalarNode\\(\\) on Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeParentInterface\\|null\\.$#"
 			count: 1
 			path: src/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Method Core23\\\\FacebookBundle\\\\Session\\\\Session\\:\\:fromFacebookApi\\(\\) has parameter \\$graphUser with no value type specified in iterable type Facebook\\\\GraphNodes\\\\GraphUser\\.$#"
+			count: 1
+			path: src/Session/Session.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 2
+			path: src/Session/Session.php
 
 		-
 			message: "#^Property Core23\\\\FacebookBundle\\\\Tests\\\\Action\\\\AuthErrorActionTest\\:\\:\\$twig has no typehint specified\\.$#"
@@ -95,4 +115,8 @@ parameters:
 			count: 1
 			path: tests/EventDispatcher/TestEventDispatcher.php
 
+		-
+			message: "#^Method Core23\\\\FacebookBundle\\\\Tests\\\\EventDispatcher\\\\TestEventDispatcher\\:\\:dispatch\\(\\) should return object but return statement is missing\\.$#"
+			count: 1
+			path: tests/EventDispatcher/TestEventDispatcher.php
 
