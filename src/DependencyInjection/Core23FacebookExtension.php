@@ -18,6 +18,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class Core23FacebookExtension extends Extension
 {
+    /**
+     * @param array<mixed> $configs
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
@@ -35,6 +38,9 @@ final class Core23FacebookExtension extends Extension
         $this->configureApi($container, $config);
     }
 
+    /**
+     * @param array<mixed> $config
+     */
     private function configureApi(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('core23_facebook.api.app_id', $config['api']['app_id']);
