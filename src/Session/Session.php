@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\FacebookBundle\Session;
 
+use DateTime;
 use Facebook\Authentication\AccessToken;
 use Facebook\GraphNodes\GraphUser;
 
@@ -32,11 +33,11 @@ final class Session implements SessionInterface
     private $token;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $expireDate;
 
-    public function __construct(string $facebookId, string $name, string $token, ?\DateTime $expireDate)
+    public function __construct(string $facebookId, string $name, string $token, ?DateTime $expireDate)
     {
         $this->facebookId = $facebookId;
         $this->name       = $name;
@@ -59,7 +60,7 @@ final class Session implements SessionInterface
         return $this->token;
     }
 
-    public function getExpireDate(): ?\DateTime
+    public function getExpireDate(): ?DateTime
     {
         return $this->expireDate;
     }

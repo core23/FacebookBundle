@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\FacebookBundle\Session;
 
+use DateTime;
+
 interface SessionInterface
 {
     public function getFacebookId(): string;
@@ -19,5 +21,5 @@ interface SessionInterface
 
     public function getToken(): string;
 
-    public function getExpireDate(): ?\DateTime;
+    public function getExpireDate(): ?DateTime;
 }
