@@ -12,10 +12,13 @@ declare(strict_types=1);
 namespace Core23\FacebookBundle\Tests\Action;
 
 use Core23\FacebookBundle\Action\AuthSuccessAction;
+use Core23\FacebookBundle\Core23FacebookEvents;
+use Core23\FacebookBundle\Event\AuthSuccessEvent;
 use Core23\FacebookBundle\Session\SessionInterface;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Core23\FacebookBundle\Tests\EventDispatcher\TestEventDispatcher;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -23,12 +26,24 @@ use Twig\Environment;
 
 final class AuthSuccessActionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy&Environment
+     */
     private $twig;
 
+    /**
+     * @var ObjectProphecy&RouterInterface
+     */
     private $router;
 
+    /**
+     * @var SessionManagerInterface&ObjectProphecy
+     */
     private $sessionManager;
 
+    /**
+     * @var TestEventDispatcher
+     */
     private $eventDispatcher;
 
     protected function setUp(): void
@@ -43,19 +58,21 @@ final class AuthSuccessActionTest extends TestCase
     {
         $session = $this->prophesize(SessionInterface::class);
 
-        $this->sessionManager->isAuthenticated()
-            ->willReturn(true)
-        ;
-        $this->sessionManager->getSession()
-            ->willReturn($session)
-        ;
-        $this->sessionManager->getUsername()
-            ->willReturn('FooUser')
-        ;
+        $this->sessionManager->isAuthenticated()->willReturn(true);
+        $this->sessionManager->getSession()->willReturn($session);
+        $this->sessionManager->getUsername()->willReturn('FooUser');
 
-        $this->twig->render('@Core23Facebook/Auth/success.html.twig', [
-            'name' => 'FooUser',
-        ])->shouldBeCalled();
+        $this->twig->render(
+            '@Core23Facebook/Auth/success.html.twig',
+            [
+                'name' => 'FooUser',
+            ]
+        )->shouldBeCalled();
+
+        $this->eventDispatcher->dispatch(
+            Argument::type(AuthSuccessEvent::class),
+            Core23FacebookEvents::AUTH_SUCCESS
+        );
 
         $action = new AuthSuccessAction(
             $this->twig->reveal(),
@@ -74,19 +91,18 @@ final class AuthSuccessActionTest extends TestCase
     {
         $session = $this->prophesize(SessionInterface::class);
 
-        $this->sessionManager->isAuthenticated()
-            ->willReturn(true)
-        ;
-        $this->sessionManager->getSession()
-            ->willReturn($session)
-        ;
-        $this->sessionManager->getUsername()
-            ->willReturn('FooUser')
-        ;
+        $this->sessionManager->isAuthenticated()->willReturn(true);
+        $this->sessionManager->getSession()->willReturn($session);
+        $this->sessionManager->getUsername()->willReturn('FooUser');
 
         $eventResponse = new Response();
 
         $this->eventDispatcher->setResponse($eventResponse);
+
+        $this->eventDispatcher->dispatch(
+            Argument::type(AuthSuccessEvent::class),
+            Core23FacebookEvents::AUTH_SUCCESS
+        );
 
         $action = new AuthSuccessAction(
             $this->twig->reveal(),
