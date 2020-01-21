@@ -12,9 +12,12 @@ declare(strict_types=1);
 namespace Core23\FacebookBundle\Tests\Action;
 
 use Core23\FacebookBundle\Action\AuthErrorAction;
+use Core23\FacebookBundle\Core23FacebookEvents;
+use Core23\FacebookBundle\Event\AuthFailedEvent;
 use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Core23\FacebookBundle\Tests\EventDispatcher\TestEventDispatcher;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -22,12 +25,24 @@ use Twig\Environment;
 
 final class AuthErrorActionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy&Environment
+     */
     private $twig;
 
+    /**
+     * @var ObjectProphecy&RouterInterface
+     */
     private $router;
 
+    /**
+     * @var SessionManagerInterface&ObjectProphecy
+     */
     private $sessionManager;
 
+    /**
+     * @var TestEventDispatcher
+     */
     private $eventDispatcher;
 
     protected function setUp(): void
@@ -40,13 +55,16 @@ final class AuthErrorActionTest extends TestCase
 
     public function testExecute(): void
     {
-        $this->sessionManager->isAuthenticated()
-            ->willReturn(false)
-        ;
+        $this->sessionManager->isAuthenticated()->willReturn(false);
 
         $this->sessionManager->clear()
             ->shouldBeCalled()
         ;
+
+        $this->eventDispatcher->dispatch(
+            Argument::type(AuthFailedEvent::class),
+            Core23FacebookEvents::AUTH_ERROR
+        );
 
         $action = new AuthErrorAction(
             $this->twig->reveal(),
@@ -63,9 +81,7 @@ final class AuthErrorActionTest extends TestCase
 
     public function testExecuteWithCaughtEvent(): void
     {
-        $this->sessionManager->isAuthenticated()
-            ->willReturn(false)
-        ;
+        $this->sessionManager->isAuthenticated()->willReturn(false);
 
         $this->sessionManager->clear()
             ->shouldBeCalled()
@@ -74,6 +90,11 @@ final class AuthErrorActionTest extends TestCase
         $eventResponse = new Response();
 
         $this->eventDispatcher->setResponse($eventResponse);
+
+        $this->eventDispatcher->dispatch(
+            Argument::type(AuthFailedEvent::class),
+            Core23FacebookEvents::AUTH_ERROR
+        );
 
         $action = new AuthErrorAction(
             $this->twig->reveal(),
