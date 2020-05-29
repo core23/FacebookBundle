@@ -18,6 +18,7 @@ use Core23\FacebookBundle\Session\SessionManagerInterface;
 use Core23\FacebookBundle\Tests\EventDispatcher\TestEventDispatcher;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -26,17 +27,17 @@ use Twig\Environment;
 final class AuthErrorActionTest extends TestCase
 {
     /**
-     * @var ObjectProphecy&Environment
+     * @var Environment|ObjectProphecy
      */
     private $twig;
 
     /**
-     * @var ObjectProphecy&RouterInterface
+     * @var ObjectProphecy|RouterInterface
      */
     private $router;
 
     /**
-     * @var SessionManagerInterface&ObjectProphecy
+     * @var ObjectProphecy|SessionManagerInterface
      */
     private $sessionManager;
 

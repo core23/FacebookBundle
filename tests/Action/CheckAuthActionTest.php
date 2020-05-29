@@ -28,12 +28,24 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class CheckAuthActionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy|RouterInterface
+     */
     private $router;
 
+    /**
+     * @var Facebook|ObjectProphecy
+     */
     private $facebook;
 
+    /**
+     * @var ObjectProphecy|SessionManagerInterface
+     */
     private $sessionManager;
 
+    /**
+     * @var FacebookRedirectLoginHelper|ObjectProphecy
+     */
     private $helper;
 
     protected function setUp(): void
