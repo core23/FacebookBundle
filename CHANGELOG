@@ -1,165 +1,27 @@
-14/04/2019 14:54  1.1.0  Only use stable versions
-5c2825f [MINOR] Require stable versions
-895c222 [BUILD] Updated branch alias
-14/04/2019 14:34  1.0.0  First stable release
-fec9fc3 [BUILD] Removed dependency stage from build matrix
-c860d8c [BUILD] Removed current copyright date
-17dca52 [TEST] Increased test converage
-23634c0 [TEST] Increased test converage
-5fbcdf2 [TEST] Increased test converage
-6fb3382 [BUILD] Minor internal refactoring
-9ab1c8c [MINOR] Use less specific interfaces/classes
-debb427 [BUILD] Fixed phpstan includes
-f959871 [BUILD] Cleanup phpstan errors
-ac880e7 [BUILD] Added more tests
-3402fe2 [BUILD] Cleanup phpstan errors
-fc38fb0 [BUILD] Fixed phpstan ignore list
-dc317e4 [BUILD] Added more tests
-dad8b17 [BUILD] Added weak_vendors when calling phpunit
-ce12c0f [PATCH] Updated CS Fixer config and run
-2281b99 [BUILD] Updated phpstan version
-464f1bd [BUILD] Fixed symfony test setup
-9537221 [MINOR] Removed support for outdated symfony versions
-09/01/2019 20:35  0.5.1  Added support for latest antispam bundle
-26a6002 Added support for latest antispam bundle
-6250610 Updated cs-fixer config
-5af197c Use return types
-8fa0305 Fixed CS
-30/12/2018 22:12  0.5.0  Removed symfony deprecations
-08f4c51 Fixed phpunit config for release command
-46c2ef0 Use asserts for type safe root config nodes
-cecc63f Removed deprecation warnings
-5451bbf Removed deprecation warnings
-043edfe Fixed wrong parameter type for Metadata
-f2d9219 Added platform workaround for php-cs-fixer tool
-cbee389 Require latest phpunit bridge
-ae73d11 Removed sonata core-bundle dependency
-d3bc439 Removed sonata core-bundle dependency
-7b38ccd Require latest phpunit bridge
-4e58bdc Improved unit tests
-28d1569 Removed deprecation warnings
-5f2c11d Travis: Test against PHP 7.3
-6d1f8be Dropped support for PHP 7.1
-96ca9db Fixed syntax error in editorconfig
-1f1f364 Moved test dependencies to vendor-bin
-07/11/2018 17:23  0.4.4  Public services
-85b0184 Made actions public
-02/11/2018 08:08  0.4.3  Autowiring
-79dc014 Added class aliases
-13e6d28 Removed donation from README
-acabf0d Added service aliases for autowiring
-8f498df Added support for latest twig extensions
-432fe12 Updated release config
-83f5a03 Updated style config
-29/09/2018 15:47  0.4.2  Support for latest core23/antispam-bundle
-ac5065e Added support for new antispam bundle version
-21/09/2018 17:11  0.4.1  Missing dependencies
-96c2702 Added missing dependencies
-9a95ca6 Added missing dependencies
-21/09/2018 16:46  0.4.0  Action pattern
-80f1075 Removed templating dependency
-dfe9f3d Updated .editorconfig
-eab52b9 TRAVIS: Moved dependencies check to allow failures
-4e90afd Removed useless PHPDoc
-73adc8c Sync config
-ed77001 Added composer-require-checker to build
-55867a9 Sync phpstan config
-be440a9 phpstan findings
-943bce3 Require latest phpstan version
-8c7cd55 Use class name as controller service id
-120c853 Added type to private methods
-e60f637 Removed internal method
-16625e8 Created issue templates
-8f7eee2 Catch null pointer exception
-510310f Clean phpstan config
-bc7eb66 Added getUsername to success event
-8cb95e6 Use events instead custom redirect routes
-7807125 Catch null values when converting API to internal model
-7c25759 Fixed wrong PHPDoc
-2cee89e Use ADR pattern
-3bbbddc Closing API
-0d6b4d7 Updated admin dependency
-cc1a009 Pass token key instead of token object to session
-07/02/2018 20:58  0.3.0  Added more options to feed block
-c2ce42c Cleanup translation files
-a25ddd3 Bumped twig-extension dependency
-3627c53 Use antispam bundle
-5368a99 Don't use PHPUnit 7 yet
-9a377c9 Fixed CS
-f294365 Make blocks more configurable
-27/01/2018 10:29  0.2.0  Changed service bundle prefix
-b872282 Added missing twig extension dependency
-93ec8ca Fixed link in README
-d6a647a Improved documentation
-50fc8b4 Adding stages to travis build
-bd39a8e Replaced composer.phar with composer in docs
-cc71ae7 Make tests final
-865d3c2 Don't use parameters for class names
-03eb3af Use correct bundle prefix for serivices and parameters
-48b4c7b Ignore vendor-bin when calling lint
-09aec6e Use weak vendors mode
-31f7249 Added rmt tool
-abdd2fc Normalize composer.json file
-235b56c Cleanup PHPStan ignores
-7cc505c Added dev tools via composer-bin plugin
-7c90141 Sync config
-981a26a Removed old build config
-68b7c25 Use global phpunit version when calling RMT
-c390ea4 Bumped sonata dependencies
-8c85a26 Added composer suggestions
-c5a6f92 Removed PHPUnit from phpstan
-5d7ffca Use PHPUnit 6
-9c615db Moved all translation to xlf
-b77486e Use new twig paths
-84be770 Ignore PHPUnit warnings when calling phpstan
-442c6cd Added phpstan extension to travis
-35e2eb5 Removed hard phpunit dependency
-fe7ae24 Removed version information from phpunit.xml.dist
-aa83016 Ignore PHPUnit errors when calling phpstan
-722baaf Fixed coveralls build
-cd801b8 Sync build config
-b6139ab Removed code climate status
-db30ecb Sync config
-a1d0364 Ignore symfony DI errors when calling phpstan
-aa1aa5e Updated travis config for outdated symfony versions
-5c40468 Bumped symfony deps to >=3.4
-c5f4363 Require latest phpstan version
-63abe23 Fixed CS
-eb1c0b9 Sync config
-67098bd Sync config
-672d467 Added .editorconfig
-991840e Apply fixes from StyleCI
-9f26b8e Added support for PHP 7.2 and Symfony 3.4 / 4.x
-0468351 Fixed PHPStan issues
-4776a98 Fixed PHPUnit path config
-c0b5bbe Revert "Bumped DI test version"
-797551d Added symfony/expression-language dependency to work with sf3
-55be71f Bumped DI test version
-2c36666 Cleanup phpstan config
-6e418fa Fixed phpstan runner settings
-f3e0c75 Force phpstan check when running travis
-d3c42cb Added missing dependencies
-c7590af Added SymfonyTestsListener
-92b0120 Fixed PHPDoc
-24a456a Removed unused session class
-8333793 Added null check to login check
-efe377a Fixed CS
-f03f495 Cleanup autoloader for tests
-dcf487b Fixed coverage paths
-c27097d [travis] Removed xdebug config
-86b995e Added type hints
-9f8f177 Extract store credentials method
-0b21d13 [travis] Moved phpstan to allow failures
-ea368af Missing test files after refactoring folder structure
-e2b6779 Refactor folder structure
-6029c41 Use latest phpstan version
-26c1cce Fixed PHPStan runner
-a889ddd Added PHPStan checks to travis
-b4e5749 Added option to sort composer packages
-aa2fcd6 Removed HHVM from travis setup
-4ba9a39 Dropped support for PHP 7.0
-cc2e711 Dropped support for outdated symfony versions
-c5ff4de Fixed wrong export-ignore entry
-960a26c Fixed CS
-cfc7cb2 Use new PHP features (::class, null coalescing)
-13e43ce Fixed CS
+# 1.2.0
+
+## Changes
+
+- Add missing strict file header @core23 (#33)
+- Use default public setting for all actions @core23 (#18)
+- Removed deprecated name argument from block constructor @core23 (#16)
+
+## 🚀 Features
+
+- Use new block signatures @core23 (#15)
+- Use symfony contracts @core23 (#7)
+
+## 🐛 Bug Fixes
+
+- Add correct status code for auth error @core23 (#37)
+
+## 📦 Dependencies
+
+- Bump symfony versions @core23 (#49)
+- Add support for symfony 5 @core23 (#25)
+- Update symfony/options-resolver requirement from ^4.2 to ^5.0 @dependabot-preview (#44)
+- Remove antispam dependency @core23 (#39)
+- Drop support for symfony 3 @core23 (#35)
+- Drop Sonata CoreBundle dependency @core23 (#34)
+- Use latest block bundle for auto-registration of blocks @core23 (#22)
+- Removed admin bundle dependency @core23 (#21)
